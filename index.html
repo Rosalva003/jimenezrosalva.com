@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosalva Portfolio - Y2K Baby Pink Vibes ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Rosalva Jimenez - Creative Developer & Y2K Enthusiast. Explore my portfolio featuring retro-futuristic web design, pink gradients, and digital art projects.">
+    <meta name="keywords" content="portfolio, web developer, Y2K design, pink aesthetic, creative developer, digital artist, retro web design">
+    <meta name="author" content="Rosalva Jimenez">
+    <title>Rosalva Portfolio - Y2K Baby Pink Vibes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&family=Comfortaa:wght@300;400;700&family=Baloo+2:wght@400;500;600;700;800&family=DotGothic16:wght@400&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,33 +16,478 @@
         }
 
         body {
-            font-family: 'Comfortaa', cursive;
-            background: #1a1a1a;
+            font-family: 'DotGothic16', monospace;
+            background: linear-gradient(135deg, 
+                #000000 0%, 
+                #1a001a 25%, 
+                #000000 50%, 
+                #1a001a 75%, 
+                #000000 100%);
+            background-size: 400% 400%;
+            animation: blackShimmer 8s ease infinite;
             color: #ffffff;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
         }
 
-        /* Starfield Background */
-        #starfield {
+        /* Custom Cursor */
+        body {
+            cursor: none;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.9) 0%, rgba(255, 105, 180, 0.7) 50%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.1s ease;
+            box-shadow:
+                0 0 20px rgba(255, 20, 147, 0.8),
+                0 0 40px rgba(255, 105, 180, 0.6),
+                0 0 60px rgba(255, 192, 203, 0.4);
+        }
+
+        .custom-cursor::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: cursorGlow 2s ease-in-out infinite alternate;
+        }
+
+        .custom-cursor::after {
+            content: '★';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+            animation: starTwinkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes cursorGlow {
+            0% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% { 
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { 
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        /* Cursor hover effects */
+        .custom-cursor.hover {
+            transform: scale(1.5);
+            background: radial-gradient(circle, rgba(255, 182, 193, 1) 0%, rgba(255, 105, 180, 0.8) 50%, transparent 100%);
+            box-shadow: 
+                0 0 30px rgba(255, 182, 193, 1),
+                0 0 60px rgba(255, 105, 180, 0.8),
+                0 0 90px rgba(255, 192, 203, 0.6);
+        }
+
+        .custom-cursor.hover::after {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 1);
+        }
+
+        /* Twinkling Stars Background */
+        #stars-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .star {
             position: absolute;
-            background: #fff;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 20, 147, 0.6) 50%, transparent 100%);
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            animation: twinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 6px rgba(255, 20, 147, 0.8);
+        }
+
+        /* Additional Twinkling Stars Background */
+        .twinkling-stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .twinkling-star {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 20, 147, 0.4) 50%, transparent 70%);
+            border-radius: 50%;
+            animation: softTwinkle 4s ease-in-out infinite;
+        }
+
+        .twinkling-star::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.4) 0%, transparent 80%);
+            border-radius: 50%;
+            animation: softGlow 3s ease-in-out infinite alternate;
+        }
+
+        .twinkling-star.fade-slow {
+            animation: softTwinkle 6s ease-in-out infinite;
+        }
+
+        .twinkling-star.fade-fast {
+            animation: softTwinkle 2s ease-in-out infinite;
+        }
+
+        .twinkling-star.pulse {
+            animation: softPulse 4s ease-in-out infinite;
+        }
+
+        .twinkling-star.shimmer {
+            animation: softShimmer 5s ease-in-out infinite;
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 1);
+        }
+
+        .star.sparkle {
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 182, 193, 0.8) 30%, transparent 100%);
+            animation: sparkleTwinkle 2s ease-in-out infinite;
+        }
+
+        .star::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: starGlow 2s ease-in-out infinite alternate;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes starGlow {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes sparkleTwinkle {
+            0%, 100% { 
+                opacity: 0.4; 
+                transform: scale(1);
+                box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+            }
+        }
+
+        @keyframes holographicShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes starField {
+            0% { background-position: 0 0; }
+            100% { background-position: 400px 200px; }
+        }
+
+        @keyframes sparkleBurst {
+            0% { 
+                opacity: 0;
+                transform: scale(0.5);
+                filter: blur(2px);
+            }
+            20% { 
+                opacity: 0.8;
+                transform: scale(1.2);
+                filter: blur(0px);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0px);
+            }
+            80% { 
+                opacity: 0.6;
+                transform: scale(0.8);
+                filter: blur(1px);
+            }
+            100% { 
+                opacity: 0;
+                transform: scale(0.3);
+                filter: blur(3px);
+            }
+        }
+
+        @keyframes softTwinkle {
+            0%, 100% { 
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            25% { 
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+            50% { 
+                opacity: 0.4;
+                transform: scale(0.9);
+            }
+            75% { 
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes softGlow {
+            0% { 
+                opacity: 0.1;
+                transform: scale(0.9);
+            }
+            100% { 
+                opacity: 0.3;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes softPulse {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes softShimmer {
+            0% { 
+                opacity: 0.2;
+                transform: scale(0.8) rotate(0deg);
+            }
+            25% { 
+                opacity: 0.8;
+                transform: scale(1.2) rotate(90deg);
+            }
+            50% { 
+                opacity: 0.4;
+                transform: scale(0.9) rotate(180deg);
+            }
+            75% { 
+                opacity: 0.9;
+                transform: scale(1.1) rotate(270deg);
+            }
+            100% { 
+                opacity: 0.2;
+                transform: scale(0.8) rotate(360deg);
+            }
+        }
+
+        @keyframes chromeShimmer {
+            0% { 
+                background-position: 0% 50%;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            }
+            25% { 
+                background-position: 100% 50%;
+                filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.9));
+            }
+            50% { 
+                background-position: 200% 50%;
+                filter: drop-shadow(0 0 20px rgba(255, 105, 180, 1));
+            }
+            75% { 
+                background-position: 300% 50%;
+                filter: drop-shadow(0 0 15px rgba(255, 192, 203, 0.9));
+            }
+            100% { 
+                background-position: 400% 50%;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            }
+        }
+
+        @keyframes chromeGlow {
+            0% { 
+                background-position: 0% 50%;
+                opacity: 0.6;
+            }
+            25% { 
+                background-position: 100% 50%;
+                opacity: 0.8;
+            }
+            50% { 
+                background-position: 200% 50%;
+                opacity: 1;
+            }
+            75% { 
+                background-position: 300% 50%;
+                opacity: 0.8;
+            }
+            100% { 
+                background-position: 400% 50%;
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { 
+                text-shadow: 0 0 30px rgba(255, 20, 147, 0.8), 0 0 60px rgba(255, 105, 180, 0.6);
+                filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.9));
+            }
+            50% { 
+                text-shadow: 0 0 50px rgba(255, 20, 147, 1), 0 0 100px rgba(255, 105, 180, 0.8);
+                filter: drop-shadow(0 0 40px rgba(255, 20, 147, 1));
+            }
+        }
+
+        @keyframes neonGlow {
+            0% { 
+                box-shadow: 
+                    0 0 80px rgba(255, 20, 147, 0.4),
+                    inset 0 0 60px rgba(255, 20, 147, 0.1);
+                border-color: rgba(255, 20, 147, 0.6);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 120px rgba(255, 20, 147, 0.8),
+                    inset 0 0 80px rgba(255, 20, 147, 0.2);
+                border-color: rgba(255, 105, 180, 0.8);
+            }
+        }
+
+        @keyframes neonShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes blackShimmer {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes starPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 0 20px rgba(255, 20, 147, 0.8),
+                    0 0 40px rgba(255, 105, 180, 0.6),
+                    0 0 60px rgba(255, 20, 147, 0.4);
+            }
+            50% { 
+                transform: scale(1.2);
+                box-shadow: 
+                    0 0 30px rgba(255, 20, 147, 1),
+                    0 0 60px rgba(255, 105, 180, 0.8),
+                    0 0 90px rgba(255, 20, 147, 0.6);
+            }
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { 
+                opacity: 0.7;
+                transform: scaleX(1);
+                box-shadow: 0 0 8px rgba(255, 20, 147, 0.6);
+            }
+            50% { 
+                opacity: 1;
+                transform: scaleX(1.05);
+                box-shadow: 0 0 15px rgba(255, 20, 147, 0.9), 0 0 25px rgba(255, 105, 180, 0.6);
+            }
+        }
+
+        @keyframes constellationSparkle {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            25% { 
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+            50% { 
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+            75% { 
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes pearlescentShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Navigation */
@@ -47,12 +495,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 182, 193, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.2) 0%, 
+                rgba(255, 105, 180, 0.2) 50%,
+                rgba(255, 192, 203, 0.2) 100%);
             backdrop-filter: blur(20px);
             padding: 20px 0;
             z-index: 1000;
-            border-bottom: 2px solid rgba(255, 182, 193, 0.3);
-            transition: all 0.3s ease;
+            border-bottom: 2px solid rgba(255, 182, 193, 0.4);
+            box-shadow: 0 0 30px rgba(255, 182, 193, 0.3);
         }
 
         .nav-container {
@@ -65,15 +516,24 @@
         }
 
         .nav-logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #ffb6c1, #ff69b4, #ffc0cb);
-            background-size: 200% 200%;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.2rem;
+            font-weight: 400;
+            background: linear-gradient(45deg, 
+                #ff1493 0%, 
+                #ff69b4 25%, 
+                #ff20b2 50%, 
+                #ff69b4 75%, 
+                #ff1493 100%);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleShimmer 3s ease-in-out infinite;
+            animation: neonPulse 2s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            letter-spacing: 3px;
+            position: relative;
+            filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.9));
         }
 
         .nav-menu {
@@ -85,28 +545,43 @@
             padding: 0;
         }
 
-        .nav-menu li {
-            margin: 0;
-        }
-
         .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-family: 'Press Start 2P', monospace;
-            font-size: 12px;
-            padding: 10px 20px;
-            border: 2px solid transparent;
+            font-size: 11px;
+            padding: 12px 24px;
+            border: 2px solid #ff1493;
             transition: all 0.3s ease;
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.2), rgba(255, 105, 180, 0.2));
-            border-radius: 10px;
+            background: linear-gradient(45deg, rgba(255, 20, 147, 0.1), rgba(255, 105, 180, 0.1));
+            border-radius: 15px;
             display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-menu a:hover::before {
+            left: 100%;
         }
 
         .nav-menu a:hover {
-            border-color: rgba(255, 182, 193, 0.8);
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(255, 105, 180, 0.4));
-            box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
-            transform: translateY(-2px);
+            border-color: #ff69b4;
+            background: linear-gradient(45deg, rgba(255, 20, 147, 0.3), rgba(255, 105, 180, 0.3));
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
+            transform: translateY(-3px);
+            color: #ff1493;
         }
 
         /* Hamburger Menu */
@@ -114,31 +589,30 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 5px;
-            background: rgba(255, 182, 193, 0.2);
-            border-radius: 8px;
-            border: 2px solid rgba(255, 182, 193, 0.3);
+            padding: 8px;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.3));
+            border-radius: 12px;
+            border: 2px solid rgba(255, 182, 193, 0.4);
             transition: all 0.3s ease;
         }
 
         .hamburger:hover {
-            background: rgba(255, 182, 193, 0.4);
-            border-color: rgba(255, 182, 193, 0.6);
-            box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.5), rgba(255, 105, 180, 0.5));
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
         }
 
         .hamburger span {
-            width: 25px;
+            width: 28px;
             height: 3px;
-            background: #fff;
+            background: linear-gradient(90deg, #ffb6c1, #ff69b4);
             margin: 3px 0;
             transition: all 0.3s ease;
             border-radius: 2px;
-            box-shadow: 0 0 5px rgba(255, 182, 193, 0.5);
+            box-shadow: 0 0 8px rgba(255, 182, 193, 0.6);
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
         .hamburger.active span:nth-child(2) {
@@ -146,7 +620,7 @@
         }
 
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
+            transform: rotate(-45deg) translate(8px, -8px);
         }
 
         /* Mobile Menu */
@@ -156,15 +630,15 @@
             left: 0;
             width: 100%;
             background: linear-gradient(135deg, 
-                rgba(255, 182, 193, 0.15) 0%, 
-                rgba(255, 105, 180, 0.15) 50%,
-                rgba(255, 192, 203, 0.15) 100%);
+                rgba(255, 182, 193, 0.25) 0%, 
+                rgba(255, 105, 180, 0.25) 50%,
+                rgba(255, 192, 203, 0.25) 100%);
             backdrop-filter: blur(30px);
-            border: 2px solid rgba(255, 182, 193, 0.3);
+            border: 2px solid rgba(255, 182, 193, 0.4);
             border-top: none;
             box-shadow: 
-                0 0 50px rgba(255, 182, 193, 0.4),
-                inset 0 0 30px rgba(255, 255, 255, 0.1);
+                0 0 60px rgba(255, 182, 193, 0.5),
+                inset 0 0 40px rgba(255, 255, 255, 0.1);
             transform: translateY(-100%);
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -189,12 +663,12 @@
             color: #fff;
             text-decoration: none;
             font-family: 'Press Start 2P', monospace;
-            font-size: 14px;
-            padding: 15px 20px;
-            border: 2px solid rgba(255, 182, 193, 0.4);
+            font-size: 13px;
+            padding: 18px 24px;
+            border: 2px solid rgba(255, 182, 193, 0.5);
             transition: all 0.3s ease;
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.2), rgba(255, 105, 180, 0.2));
-            border-radius: 15px;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.3));
+            border-radius: 20px;
             display: block;
             text-align: center;
             position: relative;
@@ -208,7 +682,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             transition: left 0.5s ease;
         }
 
@@ -217,106 +691,570 @@
         }
 
         .mobile-menu a:hover {
-            border-color: rgba(255, 182, 193, 0.8);
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(255, 105, 180, 0.4));
+            border-color: rgba(255, 182, 193, 0.9);
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.5), rgba(255, 105, 180, 0.5));
             box-shadow: 
-                0 0 25px rgba(255, 182, 193, 0.7),
-                inset 0 0 20px rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+                0 0 30px rgba(255, 182, 193, 0.8),
+                inset 0 0 25px rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, 
-                rgba(255, 182, 193, 0.1) 0%, 
-                rgba(255, 105, 180, 0.1) 25%,
-                rgba(255, 192, 203, 0.1) 50%,
-                rgba(255, 182, 193, 0.1) 75%,
-                rgba(255, 105, 180, 0.1) 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
             position: relative;
+            z-index: 2;
+            padding: 120px 20px 0 20px;
         }
 
-        .hero::before {
+        .hero-content {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.8) 0%, 
+                rgba(26, 0, 26, 0.7) 25%, 
+                rgba(0, 0, 0, 0.9) 50%, 
+                rgba(26, 0, 26, 0.8) 75%, 
+                rgba(0, 0, 0, 0.8) 100%);
+            backdrop-filter: blur(25px);
+            border-radius: 40px;
+            padding: 120px 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.2) 0%, transparent 50%);
-            animation: sparkle 4s ease-in-out infinite alternate;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(255, 182, 193, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 60px 40px;
-            border: 3px solid rgba(255, 182, 193, 0.3);
-            box-shadow: 
-                0 0 50px rgba(255, 182, 193, 0.3),
-                inset 0 0 50px rgba(255, 255, 255, 0.1);
-            animation: containerGlow 4s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, 
+                rgba(255, 182, 193, 0.1), 
+                rgba(255, 105, 180, 0.1),
+                rgba(255, 192, 203, 0.1),
+                rgba(255, 91, 164, 0.1));
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+            border-radius: 37px;
         }
 
         .hero h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #ffb6c1, #ff69b4, #ffc0cb, #ffb6c1);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            letter-spacing: 4px;
-            animation: titleShimmer 3s ease-in-out infinite alternate, titleBounce 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.6));
+            font-family: 'Press Start 2P', monospace;
+            font-size: 3rem;
+            font-weight: 400;
+            color: #ff1493;
+            margin-bottom: 0;
+            letter-spacing: 8px;
+            text-shadow: 0 0 30px rgba(255, 20, 147, 0.8), 0 0 60px rgba(255, 105, 180, 0.6);
+            animation: neonPulse 2s ease-in-out infinite, nameFadeIn 2s ease-out forwards;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.9));
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero h1::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: sparkleGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .hero h1::after {
+            content: '✧';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            animation: sparkleTwinkle 2s ease-in-out infinite, sparkleFloat 4s ease-in-out infinite;
+            z-index: 3;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            color: #ff69b4;
+        }
+
+        /* Additional sparkle decorations */
+        .hero h1 .sparkle-left {
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            animation: sparkleTwinkle 2.5s ease-in-out infinite, sparkleFloat 3.5s ease-in-out infinite;
+            z-index: 3;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            color: #ff69b4;
+        }
+
+        .hero h1 .sparkle-right {
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            animation: sparkleTwinkle 2.8s ease-in-out infinite, sparkleFloat 4.2s ease-in-out infinite;
+            z-index: 3;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            color: #ff69b4;
+        }
+
+        .hero h1 .sparkle-bottom {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            animation: sparkleTwinkle 3s ease-in-out infinite, sparkleFloat 3.8s ease-in-out infinite;
+            z-index: 3;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            color: #ff69b4;
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-family: 'DotGothic16', monospace;
+            font-size: 1.2rem;
             color: #fff;
-            margin-bottom: 30px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-            animation: subtitlePulse 2s ease-in-out infinite;
+            margin-bottom: 35px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+            animation: subtitlePulse 2.5s ease-in-out infinite, taglineSlideIn 1.5s ease-out 1s forwards;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Floating Avatar */
+        .floating-avatar {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.9) 0%, 
+                rgba(255, 105, 180, 0.8) 50%,
+                rgba(255, 20, 147, 0.9) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+            box-shadow: 
+                0 0 30px rgba(255, 20, 147, 0.6),
+                0 0 60px rgba(255, 105, 180, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: avatarFloat 4s ease-in-out infinite;
+            z-index: 3;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .floating-avatar::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, 
+                rgba(255, 20, 147, 0.3), 
+                rgba(255, 105, 180, 0.3),
+                rgba(255, 182, 193, 0.3),
+                rgba(255, 20, 147, 0.3));
+            border-radius: 50%;
+            animation: avatarGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        /* Avatar Stars */
+        .avatar-star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 182, 193, 0.8) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: starTwinkle 2s ease-in-out infinite;
+        }
+
+        .avatar-star::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: starGlow 2s ease-in-out infinite alternate;
+        }
+
+        .avatar-star-1 {
+            top: 20%;
+            left: -15px;
+            animation-delay: 0s;
+            animation-duration: 2.5s;
+        }
+
+        .avatar-star-2 {
+            top: 10%;
+            right: -20px;
+            animation-delay: 0.5s;
+            animation-duration: 3s;
+        }
+
+        .avatar-star-3 {
+            bottom: 25%;
+            left: -25px;
+            animation-delay: 1s;
+            animation-duration: 2.8s;
+        }
+
+        .avatar-star-4 {
+            bottom: 15%;
+            right: -15px;
+            animation-delay: 1.5s;
+            animation-duration: 2.2s;
+        }
+
+        .avatar-star-5 {
+            top: 50%;
+            left: -30px;
+            animation-delay: 2s;
+            animation-duration: 3.2s;
+        }
+
+        .avatar-star-6 {
+            top: 50%;
+            right: -30px;
+            animation-delay: 2.5s;
+            animation-duration: 2.7s;
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { 
+                transform: translateY(-50%) translateY(0px);
+            }
+            50% { 
+                transform: translateY(-50%) translateY(-15px);
+            }
+        }
+
+        @keyframes avatarGlow {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Photo Gallery Strip */
+        .photo-gallery {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 4;
+            max-width: 90%;
+            overflow-x: auto;
+            padding: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .photo-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-photo {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .gallery-photo::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                rgba(255, 20, 147, 0.8), 
+                rgba(255, 105, 180, 0.6),
+                rgba(255, 182, 193, 0.8),
+                rgba(255, 20, 147, 0.8));
+            border-radius: 18px;
+            animation: frameGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .gallery-photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.3) 0%, 
+                rgba(26, 0, 26, 0.2) 100%);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-photo:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        .gallery-photo:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        .gallery-photo:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.6rem;
+            color: rgba(255, 182, 193, 0.8);
+            text-align: center;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-photo:hover .photo-label {
+            opacity: 1;
+        }
+
+        @keyframes frameGlow {
+            0%, 100% { 
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.02);
+            }
+        }
+
+        /* Photo Carousel */
+        .photo-carousel {
+            margin-top: 30px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.1) 0%, 
+                rgba(255, 105, 180, 0.1) 100%);
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.2);
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 182, 193, 0.8);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 105, 180, 0.9);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 182, 193, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: rgba(255, 105, 180, 0.8);
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 105, 180, 0.6);
+            transform: scale(1.2);
+        }
+
+        /* Currently Up To Section */
+        .currently-up-to {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .currently-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1rem;
+            color: #ff1493;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            animation: timelineTitleGlow 3s ease-in-out infinite;
+        }
+
+        .currently-content {
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.1) 0%, 
+                rgba(255, 105, 180, 0.1) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.2);
+        }
+
+        .currently-content p {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.8rem;
+            color: rgba(255, 182, 193, 0.9);
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+            margin: 0;
+            line-height: 1.5;
+            text-align: center;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 20px 40px;
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.3));
+            padding: 25px 50px;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(255, 105, 180, 0.4));
             color: white;
             text-decoration: none;
-            border-radius: 50px;
-            border: 3px solid rgba(255, 182, 193, 0.6);
-            font-size: 1.2rem;
+            border-radius: 60px;
+            border: 3px solid rgba(255, 182, 193, 0.7);
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(20px);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(25px);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
             box-shadow: 
-                0 0 30px rgba(255, 182, 193, 0.5),
-                inset 0 0 20px rgba(255, 255, 255, 0.2);
-            animation: buttonGlow 3s ease-in-out infinite alternate;
+                0 0 40px rgba(255, 182, 193, 0.6),
+                inset 0 0 25px rgba(255, 255, 255, 0.2);
+            animation: buttonGlow 4s ease-in-out infinite alternate;
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            z-index: 2;
         }
 
         .cta-button::before {
@@ -326,8 +1264,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: left 0.6s;
         }
 
         .cta-button:hover::before {
@@ -335,23 +1273,26 @@
         }
 
         .cta-button:hover {
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.5), rgba(255, 105, 180, 0.5));
-            border-color: rgba(255, 182, 193, 0.8);
-            transform: translateY(-5px) scale(1.05);
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.6), rgba(255, 105, 180, 0.6));
+            border-color: rgba(255, 182, 193, 0.9);
+            transform: translateY(-8px) scale(1.08);
             box-shadow: 
-                0 0 50px rgba(255, 182, 193, 0.8),
-                inset 0 0 30px rgba(255, 255, 255, 0.3);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+                0 0 60px rgba(255, 182, 193, 0.9),
+                inset 0 0 35px rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 25px rgba(255, 255, 255, 1);
         }
 
         /* About Section */
         .about {
-            padding: 100px 50px;
+            padding: 120px 50px;
             background: linear-gradient(135deg, 
-                rgba(255, 192, 203, 0.05) 0%, 
-                rgba(255, 182, 193, 0.05) 50%,
-                rgba(255, 105, 180, 0.05) 100%);
+                rgba(255, 192, 203, 0.1) 0%, 
+                rgba(255, 182, 193, 0.1) 25%,
+                rgba(255, 105, 180, 0.1) 50%,
+                rgba(255, 91, 164, 0.1) 75%,
+                rgba(255, 20, 147, 0.1) 100%);
             position: relative;
+            z-index: 2;
         }
 
         .about::before {
@@ -362,9 +1303,9 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
-            animation: sparkle 6s ease-in-out infinite alternate;
+                radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 105, 180, 0.15) 0%, transparent 50%);
+            animation: sparkle 7s ease-in-out infinite alternate;
         }
 
         .about-content {
@@ -372,70 +1313,284 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            gap: 80px;
+            align-items: start;
             position: relative;
             z-index: 2;
         }
 
         .about-text {
-            background: rgba(255, 182, 193, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            box-shadow: 0 0 30px rgba(255, 182, 193, 0.3);
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.2) 0%, 
+                rgba(255, 105, 180, 0.2) 50%,
+                rgba(255, 192, 203, 0.2) 100%);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 50px;
+            border: 3px solid rgba(255, 182, 193, 0.4);
+            box-shadow: 0 0 50px rgba(255, 182, 193, 0.4);
         }
 
         .about h2 {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffb6c1, #ff69b4, #ffc0cb);
-            background-size: 200% 200%;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, 
+                #ff1493 0%, 
+                #ff69b4 25%, 
+                #ff20b2 50%, 
+                #ff69b4 75%, 
+                #ff1493 100%);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleShimmer 4s ease-in-out infinite;
+            animation: neonPulse 2s ease-in-out infinite;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            position: relative;
+            filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.9));
+        }
+
+        .about h2::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.8) 0%, 
+                rgba(240, 240, 240, 0.6) 25%, 
+                rgba(255, 182, 193, 0.4) 50%, 
+                rgba(255, 105, 180, 0.6) 75%, 
+                rgba(255, 255, 255, 0.8) 100%);
+            background-size: 400% 400%;
+            border-radius: 5px;
+            z-index: -1;
+            animation: chromeGlow 4s ease-in-out infinite;
+            filter: blur(3px);
         }
 
         .about p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            color: rgba(255, 182, 193, 0.9);
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
         }
 
         .about-image {
-            background: rgba(255, 182, 193, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            box-shadow: 0 0 30px rgba(255, 182, 193, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-        }
-
-        .about-image::before {
-            content: '💖';
-            font-size: 8rem;
-            animation: heartBeat 2s ease-in-out infinite;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 100px 50px;
             background: linear-gradient(135deg, 
-                rgba(255, 105, 180, 0.05) 0%, 
-                rgba(255, 192, 203, 0.05) 50%,
-                rgba(255, 182, 193, 0.05) 100%);
+                rgba(255, 182, 193, 0.2) 0%, 
+                rgba(255, 105, 180, 0.2) 50%,
+                rgba(255, 192, 203, 0.2) 100%);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 20px;
+            border: 3px solid rgba(255, 182, 193, 0.4);
+            box-shadow: 0 0 50px rgba(255, 182, 193, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 400px;
+            overflow: hidden;
             position: relative;
         }
 
-        .projects::before {
+        .about-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .student-description {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .student-description p {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.9rem;
+            color: rgba(255, 182, 193, 0.9);
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+            margin: 0;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.1) 0%, 
+                rgba(255, 105, 180, 0.1) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.2);
+        }
+
+        .signature {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff1493;
+            text-align: right;
+            margin-top: 40px;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            animation: signatureGlow 3s ease-in-out infinite;
+        }
+
+
+        @keyframes signatureGlow {
+            0%, 100% { 
+                text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            }
+            50% { 
+                text-shadow: 0 0 25px rgba(255, 20, 147, 1), 0 0 35px rgba(255, 105, 180, 0.8);
+            }
+        }
+
+
+        /* Creative Journey Timeline List */
+        .timeline-section {
+            margin-top: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .timeline-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1rem;
+            color: #ff1493;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            animation: timelineTitleGlow 3s ease-in-out infinite;
+        }
+
+        .timeline-title.current-learning {
+            margin-top: 30px;
+            color: #ff69b4;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+        }
+
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-list-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: timelineSlideIn 0.6s ease forwards;
+        }
+
+        .timeline-list-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-list-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-list-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-list-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-list-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .timeline-list-item::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(255, 20, 147, 0.8) 30%, 
+                rgba(255, 105, 180, 0.6) 70%, 
+                transparent 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+            box-shadow: 
+                0 0 15px rgba(255, 20, 147, 0.6),
+                0 0 30px rgba(255, 105, 180, 0.4);
+            animation: starBulletPulse 2s ease-in-out infinite;
+        }
+
+        .timeline-year {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            color: #ff1493;
+            margin-bottom: 5px;
+            text-shadow: 0 0 8px rgba(255, 20, 147, 0.8);
+        }
+
+        .timeline-item-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            color: #ff69b4;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .timeline-item-description {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.6rem;
+            color: rgba(255, 182, 193, 0.8);
+            line-height: 1.4;
+        }
+
+        @keyframes timelineTitleGlow {
+            0%, 100% { 
+                text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            }
+            50% { 
+                text-shadow: 0 0 25px rgba(255, 20, 147, 1), 0 0 40px rgba(255, 105, 180, 0.6);
+            }
+        }
+
+        @keyframes timelineSlideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes starBulletPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 0 15px rgba(255, 20, 147, 0.6),
+                    0 0 30px rgba(255, 105, 180, 0.4);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 
+                    0 0 20px rgba(255, 20, 147, 0.8),
+                    0 0 40px rgba(255, 105, 180, 0.6);
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 120px 50px;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.9) 0%, 
+                rgba(26, 0, 26, 0.8) 50%,
+                rgba(0, 0, 0, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -443,10 +1598,493 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 40% 60%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 60% 40%, rgba(255, 182, 193, 0.1) 0%, transparent 50%);
-            animation: sparkle 5s ease-in-out infinite alternate;
+                radial-gradient(circle at 20% 20%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 182, 193, 0.1) 0%, transparent 50%);
+            animation: contactShimmer 6s ease-in-out infinite;
         }
+
+        .contact-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.8rem;
+            color: #ff1493;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            animation: contactTitleGlow 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-subtitle {
+            font-family: 'DotGothic16', monospace;
+            font-size: 1rem;
+            color: rgba(255, 182, 193, 0.9);
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-link {
+            font-family: 'DotGothic16', monospace;
+            font-size: 1.1rem;
+            color: #ff69b4;
+            text-decoration: none;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.2) 0%, 
+                rgba(255, 105, 180, 0.2) 100%);
+            border: 2px solid rgba(255, 20, 147, 0.6);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 
+                0 0 20px rgba(255, 20, 147, 0.4),
+                inset 0 0 15px rgba(255, 20, 147, 0.1);
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 20, 147, 1);
+            box-shadow: 
+                0 0 30px rgba(255, 20, 147, 0.8),
+                inset 0 0 20px rgba(255, 20, 147, 0.2);
+            color: #ffffff;
+        }
+
+        .contact-email {
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .email-link {
+            font-family: 'DotGothic16', monospace;
+            font-size: 1.1rem;
+            color: #ff69b4;
+            text-decoration: none;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.2) 0%, 
+                rgba(255, 105, 180, 0.2) 100%);
+            border: 2px solid rgba(255, 20, 147, 0.6);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 
+                0 0 20px rgba(255, 20, 147, 0.4),
+                inset 0 0 15px rgba(255, 20, 147, 0.1);
+        }
+
+        .email-link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 20, 147, 1);
+            box-shadow: 
+                0 0 30px rgba(255, 20, 147, 0.8),
+                inset 0 0 20px rgba(255, 20, 147, 0.2);
+            color: #ffffff;
+        }
+
+        .email-link .envelope {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.2rem;
+            animation: envelopeFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 20, 147, 0.6));
+        }
+
+        .email-link:hover .envelope {
+            animation: envelopeBounce 0.6s ease-in-out;
+        }
+
+        @keyframes envelopeFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% { 
+                transform: translateY(-3px) rotate(2deg);
+            }
+        }
+
+        @keyframes envelopeBounce {
+            0% { 
+                transform: translateY(0px) scale(1);
+            }
+            25% { 
+                transform: translateY(-8px) scale(1.1);
+            }
+            50% { 
+                transform: translateY(-4px) scale(1.2);
+            }
+            75% { 
+                transform: translateY(-6px) scale(1.1);
+            }
+            100% { 
+                transform: translateY(0px) scale(1);
+            }
+        }
+
+        @keyframes contactShimmer {
+            0%, 100% { 
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes contactTitleGlow {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            }
+            50% { 
+                text-shadow: 0 0 30px rgba(255, 20, 147, 1), 0 0 50px rgba(255, 105, 180, 0.6);
+            }
+        }
+
+        @keyframes nameFadeIn {
+            0% { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes taglineSlideIn {
+            0% { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes sparkleGlow {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% { 
+                transform: translateY(-5px) rotate(5deg);
+            }
+            50% { 
+                transform: translateY(-3px) rotate(-3deg);
+            }
+            75% { 
+                transform: translateY(-7px) rotate(3deg);
+            }
+        }
+
+        /* Floating Gradient Bubbles */
+        .floating-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 182, 193, 0.6) 0%, 
+                rgba(255, 105, 180, 0.4) 40%,
+                rgba(255, 20, 147, 0.3) 70%,
+                transparent 100%);
+            box-shadow: 
+                0 0 20px rgba(255, 182, 193, 0.4),
+                0 0 40px rgba(255, 105, 180, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: bubbleFloat 20s linear infinite;
+        }
+
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.8) 0%, 
+                rgba(255, 182, 193, 0.4) 50%,
+                transparent 100%);
+            border-radius: 50%;
+            animation: bubbleShimmer 3s ease-in-out infinite;
+        }
+
+        .bubble-1 {
+            width: 80px;
+            height: 80px;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+
+        .bubble-2 {
+            width: 120px;
+            height: 120px;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+
+        .bubble-3 {
+            width: 60px;
+            height: 60px;
+            animation-duration: 22s;
+            animation-delay: 10s;
+        }
+
+        .bubble-4 {
+            width: 100px;
+            height: 100px;
+            animation-duration: 28s;
+            animation-delay: 15s;
+        }
+
+        .bubble-5 {
+            width: 90px;
+            height: 90px;
+            animation-duration: 26s;
+            animation-delay: 20s;
+        }
+
+        .bubble-6 {
+            width: 70px;
+            height: 70px;
+            animation-duration: 24s;
+            animation-delay: 25s;
+        }
+
+        @keyframes bubbleFloat {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bubbleShimmer {
+            0%, 100% { 
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* 3D Star Models */
+        .floating-3d-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        .star-model {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.6));
+            animation: starFloat 15s ease-in-out infinite, starRotate 8s linear infinite;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+
+        .star-model::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, 
+                rgba(255, 182, 193, 0.3) 0%, 
+                rgba(255, 105, 180, 0.2) 50%,
+                transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: starGlow 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+
+        .star-model-1 {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .star-model-2 {
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .star-model-3 {
+            top: 40%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+
+        .star-model-4 {
+            top: 80%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .star-model-5 {
+            top: 30%;
+            left: 85%;
+            animation-delay: 8s;
+        }
+
+        .star-model-6 {
+            top: 70%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes starFloat {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotateY(0deg);
+            }
+            25% { 
+                transform: translateY(-20px) translateX(10px) rotateY(90deg);
+            }
+            50% { 
+                transform: translateY(-10px) translateX(-5px) rotateY(180deg);
+            }
+            75% { 
+                transform: translateY(-25px) translateX(15px) rotateY(270deg);
+            }
+        }
+
+        @keyframes starRotate {
+            0% { 
+                transform: rotateX(0deg) rotateZ(0deg);
+            }
+            25% { 
+                transform: rotateX(90deg) rotateZ(90deg);
+            }
+            50% { 
+                transform: rotateX(180deg) rotateZ(180deg);
+            }
+            75% { 
+                transform: rotateX(270deg) rotateZ(270deg);
+            }
+            100% { 
+                transform: rotateX(360deg) rotateZ(360deg);
+            }
+        }
+
+        @keyframes starGlow {
+            0%, 100% { 
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        @keyframes starSparkle {
+            0%, 100% { 
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        /* Mouse interaction effect */
+        .star-model.mouse-attracted {
+            animation-play-state: paused;
+        }
+
+        @keyframes sparkleBurst {
+            0% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 120px 50px;
+            background: linear-gradient(135deg, 
+                rgba(255, 105, 180, 0.1) 0%, 
+                rgba(255, 192, 203, 0.1) 25%,
+                rgba(255, 182, 193, 0.1) 50%,
+                rgba(255, 91, 164, 0.1) 75%,
+                rgba(255, 20, 147, 0.1) 100%);
+            position: relative;
+            z-index: 2;
+        }
+
 
         .projects-content {
             max-width: 1200px;
@@ -456,38 +2094,665 @@
         }
 
         .projects h2 {
-            font-family: 'Orbitron', monospace;
-            font-size: 3rem;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 60px;
-            background: linear-gradient(45deg, #ffb6c1, #ff69b4, #ffc0cb);
-            background-size: 200% 200%;
+            margin-bottom: 80px;
+            background: linear-gradient(45deg, 
+                #ff1493 0%, 
+                #ff69b4 25%, 
+                #ff20b2 50%, 
+                #ff69b4 75%, 
+                #ff1493 100%);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleShimmer 4s ease-in-out infinite;
+            animation: neonPulse 2s ease-in-out infinite;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            position: relative;
+            filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.9));
+        }
+
+        .projects h2::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(240, 240, 240, 0.7) 25%, 
+                rgba(255, 182, 193, 0.5) 50%, 
+                rgba(255, 105, 180, 0.7) 75%, 
+                rgba(255, 255, 255, 0.9) 100%);
+            background-size: 400% 400%;
+            border-radius: 8px;
+            z-index: -1;
+            animation: chromeGlow 4s ease-in-out infinite;
+            filter: blur(4px);
+        }
+
+        .projects-instruction {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.9rem;
+            color: rgba(255, 182, 193, 0.9);
+            text-align: center;
+            margin: 20px auto 40px auto;
+            max-width: 600px;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+            animation: instructionGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes instructionGlow {
+            0%, 100% { 
+                opacity: 0.8;
+                text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+            }
+            50% { 
+                opacity: 1;
+                text-shadow: 0 0 15px rgba(255, 182, 193, 0.8), 0 0 25px rgba(255, 105, 180, 0.4);
+            }
+        }
+
+        /* Computer Window Styles */
+        .computer-window {
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.1) 0%, 
+                rgba(255, 105, 180, 0.1) 25%,
+                rgba(255, 182, 193, 0.1) 50%,
+                rgba(255, 91, 164, 0.1) 75%,
+                rgba(255, 20, 147, 0.1) 100%);
+            border: 3px solid;
+            border-image: linear-gradient(45deg, 
+                #ff1493, #ff69b4, #ffb6c1, #ff91a4, #ff1493) 1;
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: 
+                0 0 20px rgba(255, 20, 147, 0.4),
+                inset 0 0 20px rgba(255, 20, 147, 0.1);
+        }
+
+        .computer-window:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 30px rgba(255, 20, 147, 0.6),
+                inset 0 0 25px rgba(255, 20, 147, 0.2);
+        }
+
+        .window-titlebar {
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.8) 0%, 
+                rgba(255, 105, 180, 0.8) 100%);
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 20, 147, 0.6);
+        }
+
+        .window-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(255, 20, 147, 0.8);
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .window-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .control-close { 
+            background: #ff4757; 
+        }
+        .control-close::before {
+            content: '✕';
+        }
+
+        .control-minimize { 
+            background: #ffa502; 
+        }
+        .control-minimize::before {
+            content: '−';
+        }
+
+        .control-maximize { 
+            background: #2ed573; 
+        }
+        .control-maximize::before {
+            content: '□';
+        }
+
+        .window-content {
+            padding: 30px;
+            min-height: 250px;
+            position: relative;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.7) 0%, 
+                rgba(26, 0, 26, 0.6) 100%);
+        }
+
+        .project-preview {
+            text-align: center;
+            color: rgba(255, 182, 193, 0.9);
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .project-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1rem;
+            color: #ff69b4;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+        }
+
+        .project-description {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: rgba(255, 182, 193, 0.8);
+        }
+
+        .project-expanded {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 80vw;
+            max-width: 800px;
+            max-height: 80vh;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(26, 0, 26, 0.9) 100%);
+            border: 3px solid;
+            border-image: linear-gradient(45deg, 
+                #ff1493, #ff69b4, #ffb6c1, #ff91a4, #ff1493) 1;
+            border-radius: 8px;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            box-shadow: 
+                0 0 50px rgba(255, 20, 147, 0.8),
+                inset 0 0 30px rgba(255, 20, 147, 0.2);
+        }
+
+        .project-expanded.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .expanded-content {
+            padding: 30px;
+        }
+
+        .expanded-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.2rem;
+            color: #ff1493;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+        }
+
+        .expanded-description {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 182, 193, 0.9);
+            margin-bottom: 20px;
+        }
+
+        .expanded-tech {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            color: #ff69b4;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(255, 20, 147, 0.8);
+        }
+
+        .expanded-date {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.7rem;
+            color: rgba(255, 182, 193, 0.7);
+        }
+
+        .expanded-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.1) 0%, 
+                rgba(255, 105, 180, 0.1) 50%,
+                rgba(255, 182, 193, 0.1) 100%);
+            border: 2px solid rgba(255, 20, 147, 0.4);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 182, 193, 0.8);
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+            box-shadow: 
+                0 0 30px rgba(255, 20, 147, 0.3),
+                inset 0 0 20px rgba(255, 20, 147, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expanded-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+            animation: imageShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes imageShimmer {
+            0%, 100% { 
+                opacity: 0.5;
+            }
+            50% { 
+                opacity: 0.8;
+            }
+        }
+
+        /* Expanded window controls inherit the same styling */
+        .project-expanded .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .project-expanded .window-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .project-expanded .control-close { 
+            background: #ff4757; 
+        }
+        .project-expanded .control-close::before {
+            content: '✕';
+        }
+
+        .project-expanded .control-minimize { 
+            background: #ffa502; 
+        }
+        .project-expanded .control-minimize::before {
+            content: '−';
+        }
+
+        .project-expanded .control-maximize { 
+            background: #2ed573; 
+        }
+        .project-expanded .control-maximize::before {
+            content: '□';
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .project-card {
-            background: rgba(255, 182, 193, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 0;
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            box-shadow: 0 0 30px rgba(255, 182, 193, 0.3);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+        .project-details-panel {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.9) 0%, 
+                rgba(26, 0, 26, 0.8) 100%);
+            border: 2px solid rgba(255, 20, 147, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 0 30px rgba(255, 20, 147, 0.6),
+                inset 0 0 20px rgba(255, 20, 147, 0.1);
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease forwards;
+            transform: translateY(-50%) translateX(-20px);
+            transition: all 0.5s ease;
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        .project-details-panel.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+            pointer-events: auto;
+        }
+
+        .panel-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            color: #ff1493;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+            text-align: center;
+        }
+
+        .panel-image {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.3) 0%, 
+                rgba(255, 105, 180, 0.3) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 20, 147, 0.4);
+            box-shadow: 
+                0 0 10px rgba(255, 20, 147, 0.3),
+                inset 0 0 10px rgba(255, 20, 147, 0.1);
+        }
+
+        .panel-tech {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .panel-date {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.6rem;
+            color: #ff69b4;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .constellation-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+
+        .constellation-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .constellation-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.6) 20%, 
+                rgba(255, 182, 193, 0.8) 50%, 
+                rgba(255, 255, 255, 0.6) 80%, 
+                transparent 100%);
+            transform-origin: left center;
+            animation: lineGlow 4s ease-in-out infinite;
+            border-radius: 1px;
+            box-shadow: 0 0 6px rgba(255, 182, 193, 0.4);
+        }
+
+        .libra-star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(255, 182, 193, 0.8) 30%, 
+                rgba(255, 105, 180, 0.6) 70%, 
+                transparent 100%);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+            box-shadow: 
+                0 0 15px rgba(255, 182, 193, 0.8),
+                0 0 25px rgba(255, 105, 180, 0.6);
+            animation: libraFloat 6s ease-in-out infinite, libraTwinkle 3s ease-in-out infinite;
+        }
+
+        .libra-star::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: libraGlow 4s ease-in-out infinite;
+        }
+
+        .libra-star:hover {
+            transform: scale(15);
+            z-index: 100;
+        }
+
+        .libra-star:hover::before {
+            opacity: 0;
+        }
+
+        .project-star-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+            z-index: 101;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(26, 0, 26, 0.9) 100%);
+            border: 2px solid rgba(255, 20, 147, 0.6);
+            border-radius: 20px;
+            padding: 40px;
+            width: 400px;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 0 50px rgba(255, 20, 147, 0.8),
+                inset 0 0 30px rgba(255, 20, 147, 0.1);
+        }
+
+        .libra-star:hover .project-star-content {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .project-star-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.1rem;
+            color: #ff1493;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
+            text-align: center;
+        }
+
+        .project-star-date {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.9rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .project-star-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.2) 0%, 
+                rgba(255, 105, 180, 0.2) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 20, 147, 0.4);
+            box-shadow: 
+                0 0 20px rgba(255, 20, 147, 0.3),
+                inset 0 0 20px rgba(255, 20, 147, 0.1);
+        }
+
+        .project-star-tech {
+            font-family: 'DotGothic16', monospace;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { 
+                opacity: 0.6;
+                transform: scaleX(1);
+                box-shadow: 0 0 6px rgba(255, 182, 193, 0.4);
+            }
+            50% { 
+                opacity: 0.9;
+                transform: scaleX(1.02);
+                box-shadow: 0 0 10px rgba(255, 182, 193, 0.7), 0 0 15px rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        @keyframes libraFloat {
+            0%, 100% { 
+                transform: translateY(0px);
+            }
+            25% { 
+                transform: translateY(-3px);
+            }
+            50% { 
+                transform: translateY(-1px);
+            }
+            75% { 
+                transform: translateY(-4px);
+            }
+        }
+
+        @keyframes libraTwinkle {
+            0%, 100% { 
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            25% { 
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(0.9);
+            }
+            75% { 
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes libraGlow {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                #ff1493, #ff69b4, #ff20b2, #ff1493, 
+                #ff69b4, #ff1493, #ff20b2, #ff69b4);
+            background-size: 400% 400%;
+            border-radius: 28px;
+            z-index: -1;
+            animation: neonShift 3s ease infinite;
+            opacity: 0.8;
         }
 
         .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -499,34 +2764,55 @@
 
         .project-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, 
-                rgba(255, 182, 193, 0.3) 0%, 
-                rgba(255, 105, 180, 0.3) 50%,
-                rgba(255, 192, 203, 0.3) 100%);
-            border-radius: 18px 18px 0 0;
+            height: 220px;
+            background: radial-gradient(circle at center, 
+                rgba(10, 10, 30, 0.9) 0%, 
+                rgba(0, 0, 20, 0.95) 70%,
+                rgba(0, 0, 0, 1) 100%);
+            border-radius: 22px 22px 0 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.9);
             position: relative;
             overflow: hidden;
+            border-bottom: 2px solid rgba(255, 182, 193, 0.3);
         }
 
         .project-image::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 182, 193, 0.6), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.9), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255, 105, 180, 0.7), transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 200px 90px, rgba(255, 192, 203, 0.6), transparent),
+                radial-gradient(1px 1px at 240px 50px, rgba(255, 255, 255, 0.9), transparent),
+                radial-gradient(2px 2px at 280px 70px, rgba(255, 182, 193, 0.7), transparent),
+                radial-gradient(1px 1px at 320px 30px, rgba(255, 105, 180, 0.6), transparent),
+                radial-gradient(1px 1px at 360px 80px, rgba(255, 255, 255, 0.8), transparent);
+            background-repeat: repeat;
+            background-size: 400px 200px;
+            animation: starField 20s linear infinite;
+            opacity: 0.7;
         }
 
+
         .project-content {
-            padding: 25px;
+            padding: 30px;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.3) 0%, 
+                rgba(20, 20, 40, 0.4) 100%);
+            border-radius: 0 0 22px 22px;
+            position: relative;
+            z-index: 2;
         }
 
         .project-card::before {
@@ -537,57 +2823,97 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, 
-                rgba(255, 182, 193, 0.1), 
-                rgba(255, 105, 180, 0.1),
-                rgba(255, 192, 203, 0.1),
-                rgba(255, 182, 193, 0.1));
+                rgba(255, 182, 193, 0.15), 
+                rgba(255, 105, 180, 0.15),
+                rgba(255, 192, 203, 0.15),
+                rgba(255, 91, 164, 0.15));
             background-size: 400% 400%;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 18px;
+            transition: opacity 0.5s ease;
+            border-radius: 22px;
         }
 
         .project-card:hover::before {
             opacity: 1;
-            animation: gradientShift 3s ease infinite;
+            animation: gradientShift 4s ease infinite;
         }
 
         .project-card:hover {
-            transform: translateY(-15px) scale(1.03);
+            transform: translateY(-20px) scale(1.05);
             box-shadow: 
-                0 0 60px rgba(255, 182, 193, 0.8),
+                0 0 120px rgba(255, 20, 147, 1),
+                0 0 80px rgba(255, 105, 180, 0.8),
+                0 0 40px rgba(255, 20, 147, 0.6),
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                inset 0 0 25px rgba(255, 20, 147, 0.2);
+            filter: drop-shadow(0 0 30px rgba(255, 20, 147, 0.8));
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+            animation-duration: 1s;
+            box-shadow: 
+                0 0 50px rgba(255, 20, 147, 0.8),
                 0 0 30px rgba(255, 105, 180, 0.6),
-                inset 0 0 20px rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 182, 193, 0.8);
+                0 0 20px rgba(255, 20, 147, 0.4);
         }
 
         .project-card:hover .project-image::before {
-            left: 100%;
+            animation-duration: 10s;
+            opacity: 1;
+        }
+
+        /* Animated Star Sparkles on Hover */
+        .project-card .sparkle-overlay {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255, 182, 193, 0.9), transparent),
+                radial-gradient(2px 2px at 60% 20%, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 80% 80%, rgba(255, 105, 180, 0.8), transparent),
+                radial-gradient(2px 2px at 30% 60%, rgba(255, 255, 255, 0.9), transparent),
+                radial-gradient(1px 1px at 70% 40%, rgba(255, 192, 203, 0.8), transparent);
+            background-size: 100% 100%;
+            opacity: 0;
+            animation: sparkleBurst 2s ease-in-out;
+            pointer-events: none;
+            z-index: 3;
+            border-radius: 25px;
+        }
+
+        .project-card:hover .sparkle-overlay {
+            opacity: 1;
+            animation: sparkleBurst 2s ease-in-out;
         }
 
         .project-card h3 {
             font-family: 'Press Start 2P', monospace;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            margin-bottom: 20px;
             color: #ffb6c1;
-            text-shadow: 0 0 10px rgba(255, 182, 193, 0.8);
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.9);
             position: relative;
             z-index: 2;
         }
 
         .project-card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
             position: relative;
             z-index: 2;
         }
 
         .project-short-desc {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
             font-style: italic;
             position: relative;
             z-index: 2;
@@ -596,120 +2922,114 @@
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 25px;
             position: relative;
             z-index: 2;
         }
 
         .tech-tag {
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.3));
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.7rem;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(255, 105, 180, 0.4));
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-family: 'Press Start 2P', monospace;
-            border: 1px solid rgba(255, 182, 193, 0.5);
+            border: 2px solid rgba(255, 182, 193, 0.6);
             color: #fff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
         }
 
         .project-links {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             position: relative;
             z-index: 2;
         }
 
         .project-link {
-            padding: 8px 16px;
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.3));
+            padding: 12px 24px;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(255, 105, 180, 0.4));
             color: white;
             text-decoration: none;
-            border-radius: 20px;
-            border: 2px solid rgba(255, 182, 193, 0.6);
-            font-size: 0.8rem;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 182, 193, 0.7);
+            font-size: 0.85rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             text-align: center;
             flex: 1;
         }
 
         .project-link:hover {
-            background: linear-gradient(45deg, rgba(255, 182, 193, 0.5), rgba(255, 105, 180, 0.5));
-            border-color: rgba(255, 182, 193, 0.8);
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.6), rgba(255, 105, 180, 0.6));
+            border-color: rgba(255, 182, 193, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
         }
 
         /* Animations */
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes sparkle {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.8; }
-        }
-
-        @keyframes containerGlow {
-            0% { 
-                box-shadow: 
-                    0 0 50px rgba(255, 182, 193, 0.3),
-                    inset 0 0 50px rgba(255, 255, 255, 0.1);
-            }
-            100% { 
-                box-shadow: 
-                    0 0 80px rgba(255, 182, 193, 0.6),
-                    inset 0 0 80px rgba(255, 255, 255, 0.2);
-            }
-        }
-
         @keyframes titleShimmer {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
+        @keyframes sparkle {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.9; }
+        }
+
+        @keyframes containerGlow {
+            0% { 
+                box-shadow: 
+                    0 0 80px rgba(255, 182, 193, 0.4),
+                    inset 0 0 60px rgba(255, 255, 255, 0.1);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 120px rgba(255, 182, 193, 0.7),
+                    inset 0 0 80px rgba(255, 255, 255, 0.2);
+            }
+        }
+
         @keyframes titleBounce {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
 
         @keyframes subtitlePulse {
             0%, 100% { 
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+                text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
                 transform: scale(1);
             }
             50% { 
-                text-shadow: 0 0 30px rgba(255, 255, 255, 1);
-                transform: scale(1.05);
+                text-shadow: 0 0 40px rgba(255, 255, 255, 1);
+                transform: scale(1.08);
             }
         }
 
         @keyframes buttonGlow {
             0% { 
                 box-shadow: 
-                    0 0 30px rgba(255, 182, 193, 0.5),
-                    inset 0 0 20px rgba(255, 255, 255, 0.2);
+                    0 0 40px rgba(255, 182, 193, 0.6),
+                    inset 0 0 25px rgba(255, 255, 255, 0.2);
             }
             100% { 
                 box-shadow: 
-                    0 0 50px rgba(255, 182, 193, 0.8),
-                    inset 0 0 30px rgba(255, 255, 255, 0.3);
+                    0 0 70px rgba(255, 182, 193, 0.9),
+                    inset 0 0 40px rgba(255, 255, 255, 0.3);
             }
         }
 
         @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.15); }
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -724,17 +3044,34 @@
             }
             
             .nav-menu a {
-                font-size: 11px;
-                padding: 8px 16px;
+                font-size: 10px;
+                padding: 10px 20px;
             }
             
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .floating-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+                right: 3%;
+            }
+            
+            .photo-gallery {
+                bottom: 3%;
+                gap: 15px;
+            }
+            
+            .gallery-photo {
+                width: 70px;
+                height: 70px;
             }
             
             .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 30px;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 40px;
             }
         }
 
@@ -751,50 +3088,143 @@
             
             /* Adjust hero section */
             .hero h1 {
-                font-size: 2.5rem;
-                letter-spacing: 2px;
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+            
+            .floating-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+                right: 2%;
+            }
+            
+            .avatar-star {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .photo-gallery {
+                bottom: 2%;
+                gap: 12px;
+            }
+            
+            .gallery-photo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .photo-label {
+                font-size: 0.5rem;
+                bottom: -20px;
+            }
+            
+            .carousel-slide {
+                height: 150px;
+            }
+            
+            .carousel-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            
+            .currently-title {
+                font-size: 0.9rem;
+            }
+            
+            .currently-content p {
+                font-size: 0.7rem;
             }
             
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 letter-spacing: 1px;
             }
             
             .hero-content {
-                padding: 40px 20px;
+                padding: 60px 30px;
             }
             
             /* About section */
             .about {
-                padding: 80px 30px;
+                padding: 100px 30px;
             }
             
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 50px;
             }
             
             .about-text, .about-image {
-                padding: 30px 20px;
+                padding: 40px 25px;
+            }
+            
+            .timeline-content {
+                width: 80%;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .timeline-line {
+                left: 20px;
+                transform: none;
+            }
+            
+            .timeline-star {
+                left: 20px;
+            }
+            
+            
+            .contact-section {
+                padding: 80px 20px;
+            }
+            
+            .contact-title {
+                font-size: 1.4rem;
+            }
+            
+            .contact-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 30px;
+            }
+            
+            .social-links {
+                gap: 15px;
+            }
+            
+            .social-link {
+                font-size: 1rem;
+                padding: 12px 25px;
+                min-width: 180px;
+            }
+            
+            .email-link {
+                font-size: 1rem;
+                padding: 12px 25px;
             }
             
             .about h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             /* Projects section */
             .projects {
-                padding: 80px 30px;
+                padding: 100px 30px;
             }
             
             .projects h2 {
-                font-size: 2.5rem;
-                margin-bottom: 40px;
+                font-size: 3rem;
+                margin-bottom: 60px;
             }
             
             .projects-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
             }
             
             .project-card {
@@ -808,43 +3238,130 @@
             }
             
             .nav-logo {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
             
             .hero h1 {
-                font-size: 2rem;
-                letter-spacing: 1px;
+                font-size: 1.8rem;
+                letter-spacing: 2px;
             }
             
-            .hero p {
+            .floating-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+                right: 1%;
+            }
+            
+            .avatar-star {
+                width: 5px;
+                height: 5px;
+            }
+            
+            .photo-gallery {
+                bottom: 1%;
+                gap: 10px;
+            }
+            
+            .gallery-photo {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .photo-label {
+                font-size: 0.4rem;
+                bottom: -18px;
+            }
+            
+            .carousel-slide {
+                height: 120px;
+            }
+            
+            .carousel-nav {
+                width: 30px;
+                height: 30px;
                 font-size: 1rem;
             }
             
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .currently-title {
+                font-size: 0.8rem;
+            }
+            
+            .currently-content p {
+                font-size: 0.6rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
             .hero-content {
-                padding: 30px 15px;
+                padding: 50px 20px;
             }
             
             .about {
-                padding: 60px 20px;
+                padding: 80px 20px;
             }
             
             .projects {
-                padding: 60px 20px;
+                padding: 80px 20px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+                max-width: 100%;
+            }
+            
+            .window-content {
+                padding: 20px;
+                min-height: 200px;
+            }
+            
+            .project-icon {
+                font-size: 3rem;
+                margin-bottom: 15px;
+            }
+            
+            .project-title {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .project-description {
+                font-size: 0.7rem;
+            }
+            
+            .expanded-image {
+                height: 200px;
+                font-size: 3rem;
+                margin-bottom: 20px;
             }
             
             .projects h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .about h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Starfield Background -->
-    <div id="starfield"></div>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Twinkling Stars Background -->
+    <div id="stars-container"></div>
+    
+    <!-- Additional Twinkling Stars Background -->
+    <div class="twinkling-stars-bg"></div>
 
     <!-- Navigation -->
     <nav>
@@ -876,11 +3393,34 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>ROSALVA JIMENEZ ✨</h1>
-            <p>Creative Developer • Y2K Enthusiast • Digital Artist 💖</p>
-            <a href="#projects" class="cta-button">Explore My Work 🌸</a>
+        <!-- Floating Gradient Bubbles -->
+        <div class="floating-bubbles">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
         </div>
+        
+        <!-- 3D Star Models -->
+        <div class="floating-3d-stars">
+            <div class="star-model star-model-1" style="background-image: url('star-model-1.png');"></div>
+            <div class="star-model star-model-2" style="background-image: url('star-model-2.png');"></div>
+            <div class="star-model star-model-3" style="background-image: url('star-model-3.png');"></div>
+            <div class="star-model star-model-4" style="background-image: url('star-model-4.png');"></div>
+            <div class="star-model star-model-5" style="background-image: url('star-model-5.png');"></div>
+            <div class="star-model star-model-6" style="background-image: url('star-model-6.png');"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>ROSALVA JIMENEZ
+                <span class="sparkle-left">★</span>
+                <span class="sparkle-right">✦</span>
+                <span class="sparkle-bottom">✧</span>
+            </h1>
+        </div>
+        
     </section>
 
     <!-- About Section -->
@@ -888,12 +3428,73 @@
         <div class="about-content">
             <div class="about-text">
                 <h2>ABOUT ME</h2>
-                <p>Welcome to my digital space! I'm a passionate developer and designer with a deep love for the Y2K aesthetic. I create beautiful, functional websites that capture the essence of early 2000s tech culture.</p>
-                <p>My work combines modern web technologies with nostalgic design elements, creating unique digital experiences that transport you back to the golden age of the internet.</p>
-                <p>When I'm not coding, you can find me exploring the latest design trends, listening to Y2K music, or dreaming about the perfect gradient.</p>
+                <p>Welcome to my digital space! I'm a digital artist and creative developer. I design through drawing, photo editing, and 3D-modeling, and recently started coding to bring those visuals into interactive, living spaces online.</p>
+                <p>My work combines traditional artistic skills with modern web technologies, creating unique digital experiences that blend visual artistry with functional design.</p>
+                <p>When I'm not coding, you can find me sketching new ideas, experimenting with 3D software, or exploring the latest design trends in digital art.</p>
+                <div class="signature">— Rosalva</div>
             </div>
             <div class="about-image">
-                <!-- Heart emoji as placeholder for image -->
+                <img src="rosalva-portrait.jpg" alt="Rosalva - Digital Artist and Creative Developer" />
+                
+                <!-- Student Description -->
+                <div class="student-description">
+                    <p>3rd year SJSU student, Digital Media Art (DMA)</p>
+                </div>
+                
+                <!-- Creative Journey Timeline List -->
+                <div class="timeline-section">
+                    <h3 class="timeline-title">ART MEDIUMS</h3>
+                    <ul class="timeline-list">
+                        <li class="timeline-list-item">
+                            <div class="timeline-item-title">DIGITAL DRAWING</div>
+                            <div class="timeline-item-description">Creating illustrations and artwork using digital drawing tablets and software.</div>
+                        </li>
+                        <li class="timeline-list-item">
+                            <div class="timeline-item-title">PHOTOSHOP</div>
+                            <div class="timeline-item-description">Photo editing, digital manipulation, and creative compositing techniques.</div>
+                        </li>
+                        <li class="timeline-list-item">
+                            <div class="timeline-item-title">PHOTOGRAPHY</div>
+                            <div class="timeline-item-description">Capturing moments and creating visual stories through the lens.</div>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="timeline-title current-learning">CURRENTLY LEARNING</h3>
+                    <ul class="timeline-list">
+                        <li class="timeline-list-item">
+                            <div class="timeline-item-title">3D MODELING</div>
+                            <div class="timeline-item-description">Bringing my 2D concepts into three-dimensional space and animation.</div>
+                        </li>
+                        <li class="timeline-list-item">
+                            <div class="timeline-item-title">WEB DEVELOPMENT</div>
+                            <div class="timeline-item-description">Building interactive digital experiences that bring my visual art to life online.</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Photo Carousel -->
+                <div class="photo-carousel">
+                    <div class="carousel-container" id="carousel-container">
+                        <div class="carousel-slide">
+                            <img src="my-artwork.gif" alt="Artwork 1" />
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="artwork2.gif" alt="Artwork 2" />
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="placeholder3.jpg" alt="Artwork 3" />
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-nav carousel-prev" id="prev-btn">‹</button>
+                    <button class="carousel-nav carousel-next" id="next-btn">›</button>
+                    
+                    <div class="carousel-dots">
+                        <button class="carousel-dot active" data-slide="0"></button>
+                        <button class="carousel-dot" data-slide="1"></button>
+                        <button class="carousel-dot" data-slide="2"></button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -903,141 +3504,223 @@
         <div class="projects-content">
             <h2>MY PROJECTS</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">🎨</div>
-                    <div class="project-content">
-                        <h3>Y2K PORTFOLIO</h3>
-                        <p class="project-short-desc">Retro-futuristic web design</p>
-                        <p>A stunning portfolio website featuring baby pink gradients, metallic chrome effects, and pixel-perfect animations. Built with HTML5, CSS3, and vanilla JavaScript.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
+                <!-- Project 1 -->
+                <div class="computer-window" data-project="1">
+                    <div class="window-titlebar">
+                        <div class="window-title">Y2K PORTFOLIO.exe</div>
+                        <div class="window-controls">
+                            <div class="window-control control-close"></div>
+                            <div class="window-control control-minimize"></div>
+                            <div class="window-control control-maximize"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                    </div>
+                    <div class="window-content">
+                        <div class="project-preview">
+                            <div class="project-icon">🎨</div>
+                            <div class="project-title">Y2K PORTFOLIO</div>
+                            <div class="project-description">A retro-futuristic portfolio website featuring pink gradients, chrome effects, and Y2K aesthetics.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">✨</div>
-                    <div class="project-content">
-                        <h3>CHROME BUTTONS</h3>
-                        <p class="project-short-desc">Interactive UI components</p>
-                        <p>Interactive button library featuring Y2K-style chrome effects, glowing animations, and satisfying hover states. Perfect for retro-futuristic web projects.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">SCSS</span>
-                            <span class="tech-tag">JavaScript</span>
+                <!-- Project 2 -->
+                <div class="computer-window" data-project="2">
+                    <div class="window-titlebar">
+                        <div class="window-title">CHROME BUTTONS.exe</div>
+                        <div class="window-controls">
+                            <div class="window-control control-close"></div>
+                            <div class="window-control control-minimize"></div>
+                            <div class="window-control control-maximize"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                    </div>
+                    <div class="window-content">
+                        <div class="project-preview">
+                            <div class="project-icon">💻</div>
+                            <div class="project-title">CHROME BUTTONS</div>
+                            <div class="project-description">Interactive chrome-style buttons with hover effects and smooth animations.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">🖼️</div>
-                    <div class="project-content">
-                        <h3>PIXEL ART GALLERY</h3>
-                        <p class="project-short-desc">Interactive digital art showcase</p>
-                        <p>An interactive gallery showcasing digital pixel art with Y2K-inspired animations and effects. Features smooth transitions and immersive visual experiences.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Canvas API</span>
-                            <span class="tech-tag">CSS3</span>
+                <!-- Project 3 -->
+                <div class="computer-window" data-project="3">
+                    <div class="window-titlebar">
+                        <div class="window-title">RETRO DASHBOARD.exe</div>
+                        <div class="window-controls">
+                            <div class="window-control control-close"></div>
+                            <div class="window-control control-minimize"></div>
+                            <div class="window-control control-maximize"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                    </div>
+                    <div class="window-content">
+                        <div class="project-preview">
+                            <div class="project-icon">📊</div>
+                            <div class="project-title">RETRO DASHBOARD</div>
+                            <div class="project-description">A retro-styled dashboard with animated charts and neon effects.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">💫</div>
-                    <div class="project-content">
-                        <h3>NEON TEXT EFFECTS</h3>
-                        <p class="project-short-desc">Glowing typography collection</p>
-                        <p>Collection of glowing text effects and animations inspired by early 2000s web design. Features multiple gradient styles and interactive hover effects.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">SVG</span>
+                <!-- Project 4 -->
+                <div class="computer-window" data-project="4">
+                    <div class="window-titlebar">
+                        <div class="window-title">NEON TEXT.exe</div>
+                        <div class="window-controls">
+                            <div class="window-control control-close"></div>
+                            <div class="window-control control-minimize"></div>
+                            <div class="window-control control-maximize"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                    </div>
+                    <div class="window-content">
+                        <div class="project-preview">
+                            <div class="project-icon">✨</div>
+                            <div class="project-title">NEON TEXT EFFECTS</div>
+                            <div class="project-description">Glowing text effects with CSS animations and SVG filters.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">📊</div>
-                    <div class="project-content">
-                        <h3>RETRO DASHBOARD</h3>
-                        <p class="project-short-desc">Y2K-inspired admin interface</p>
-                        <p>Y2K-inspired admin dashboard with glassmorphism effects, animated charts, and nostalgic color schemes. Built with modern frameworks but retro aesthetics.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">CSS3</span>
+                <!-- Project 5 -->
+                <div class="computer-window" data-project="5">
+                    <div class="window-titlebar">
+                        <div class="window-title">PIXEL ART.exe</div>
+                        <div class="window-controls">
+                            <div class="window-control control-close"></div>
+                            <div class="window-control control-minimize"></div>
+                            <div class="window-control control-maximize"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                    </div>
+                    <div class="window-content">
+                        <div class="project-preview">
+                            <div class="project-icon">🖼️</div>
+                            <div class="project-title">PIXEL ART GALLERY</div>
+                            <div class="project-description">Interactive pixel art gallery with canvas animations and retro styling.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">⚡</div>
-                    <div class="project-content">
-                        <h3>GLITCH EFFECTS</h3>
-                        <p class="project-short-desc">Digital distortion animations</p>
-                        <p>Interactive glitch effects and digital distortion animations perfect for Y2K aesthetics. Features CSS filters, transforms, and JavaScript animations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">WebGL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                <!-- Project 6 -->
+                <div class="computer-window" data-project="6">
+                    <div class="window-titlebar">
+                        <div class="window-title">GLITCH EFFECTS.exe</div>
+                        <div class="window-controls">
+                            <div class="window-control control-close"></div>
+                            <div class="window-control control-minimize"></div>
+                            <div class="window-control control-maximize"></div>
                         </div>
                     </div>
+                    <div class="window-content">
+                        <div class="project-preview">
+                            <div class="project-icon">⚡</div>
+                            <div class="project-title">GLITCH EFFECTS</div>
+                            <div class="project-description">Cyberpunk-style glitch effects using CSS transforms and WebGL shaders.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overlay for expanded view -->
+            <div class="overlay" id="overlay"></div>
+
+            <!-- Expanded Project View -->
+            <div class="project-expanded" id="expanded-project">
+                <div class="window-titlebar">
+                    <div class="window-title" id="expanded-title">PROJECT DETAILS.exe</div>
+                    <div class="window-controls">
+                        <div class="window-control control-close" id="close-expanded"></div>
+                        <div class="window-control control-minimize"></div>
+                        <div class="window-control control-maximize"></div>
+                    </div>
+                </div>
+                <div class="expanded-content">
+                    <div class="expanded-image" id="expanded-project-image">🎨</div>
+                    <div class="expanded-title" id="expanded-project-title">Project Title</div>
+                    <div class="expanded-description" id="expanded-project-description">Project description will appear here.</div>
+                    <div class="expanded-tech" id="expanded-project-tech">Technologies used</div>
+                    <div class="expanded-date" id="expanded-project-date">Project date</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h3 class="contact-title">LET'S CONNECT</h3>
+        <p class="contact-subtitle">Ready to collaborate or just want to chat about digital art and web development? Let's create something amazing together!</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/rosalva" class="social-link" title="Instagram">
+                Instagram
+            </a>
+        </div>
+        
+        <div class="contact-email">
+            <a href="mailto:rosalvaj444@gmail.com" class="email-link">
+                <span class="envelope">✉️</span>rosalvaj444@gmail.com
+            </a>
+        </div>
+    </section>
+
     <script>
-        // Starfield Background Animation
-        function createStarfield() {
-            const starfield = document.getElementById('starfield');
-            const numStars = 100;
+        // Custom Cursor Effect
+        const cursor = document.querySelector('.custom-cursor');
+        
+        // Follow mouse movement
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Add hover effects for interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .project-card, .nav-menu a, .mobile-menu a, .cta-button, .project-link');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
+        // Hide cursor when mouse leaves window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+
+        // Create Twinkling Stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            const numStars = 200; // Increased number of stars
 
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
-                star.className = 'star';
+                
+                // Random star type for variety
+                const starTypes = ['small', 'medium', 'large', 'sparkle'];
+                const randomType = starTypes[Math.floor(Math.random() * starTypes.length)];
+                star.className = `star ${randomType}`;
                 
                 // Random position
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 
-                // Random size
-                const size = Math.random() * 3 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                
-                // Random animation delay
-                star.style.animationDelay = Math.random() * 3 + 's';
+                // Random animation delay and duration for more natural twinkling
+                star.style.animationDelay = Math.random() * 4 + 's';
                 star.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 
-                starfield.appendChild(star);
+                // Add some stars with different colors occasionally (10% chance)
+                if (Math.random() < 0.1) {
+                    star.style.background = 'radial-gradient(circle, rgba(255, 182, 193, 0.9) 0%, rgba(255, 105, 180, 0.6) 50%, transparent 100%)';
+                    star.style.boxShadow = '0 0 8px rgba(255, 182, 193, 0.8)';
+                }
+                
+                starsContainer.appendChild(star);
             }
         }
 
@@ -1090,7 +3773,7 @@
             });
         });
 
-        // Button click animations
+        // Enhanced button click animations
         document.querySelectorAll('.cta-button, .project-link').forEach(button => {
             button.addEventListener('click', function(e) {
                 // Create ripple effect
@@ -1106,11 +3789,12 @@
                     height: ${size}px;
                     left: ${x}px;
                     top: ${y}px;
-                    background: rgba(255, 255, 255, 0.3);
+                    background: radial-gradient(circle, rgba(255, 182, 193, 0.4) 0%, transparent 70%);
                     border-radius: 50%;
                     transform: scale(0);
-                    animation: ripple 0.6s ease-out;
+                    animation: rippleExpand 0.8s ease-out;
                     pointer-events: none;
+                    z-index: 1;
                 `;
                 
                 this.style.position = 'relative';
@@ -1119,26 +3803,26 @@
                 
                 setTimeout(() => {
                     ripple.remove();
-                }, 600);
+                }, 800);
             });
         });
 
         // Add ripple animation CSS
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes ripple {
+            @keyframes rippleExpand {
                 to {
-                    transform: scale(2);
+                    transform: scale(2.5);
                     opacity: 0;
                 }
             }
         `;
         document.head.appendChild(style);
 
-        // Project card hover effects
+        // Enhanced project card interactions
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.transform = 'translateY(-15px) scale(1.03)';
             });
             
             card.addEventListener('mouseleave', function() {
@@ -1150,54 +3834,330 @@
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            const rate = scrolled * -0.5;
+            const rate = scrolled * -0.3;
             
             if (hero) {
                 hero.style.transform = `translateY(${rate}px)`;
             }
         });
 
-        // Initialize starfield on page load
-        window.addEventListener('load', createStarfield);
 
-        // Add some random floating elements
-        function createFloatingElements() {
-            const elements = ['✨', '💖', '🌸', '⭐', '💫'];
-            const hero = document.querySelector('.hero');
-            
-            for (let i = 0; i < 10; i++) {
-                const element = document.createElement('div');
-                element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
-                element.style.cssText = `
-                    position: absolute;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    font-size: ${Math.random() * 20 + 10}px;
-                    animation: float 6s ease-in-out infinite;
-                    animation-delay: ${Math.random() * 6}s;
-                    pointer-events: none;
-                    z-index: 1;
-                `;
-                hero.appendChild(element);
+        // Create Additional Twinkling Stars Background
+        function createTwinklingStarsBg() {
+            const twinklingContainer = document.querySelector('.twinkling-stars-bg');
+            const numTwinklingStars = 80; // More stars for background effect
+
+            for (let i = 0; i < numTwinklingStars; i++) {
+                const star = document.createElement('div');
+                
+                // Random animation type for variety
+                const animationTypes = ['fade-slow', 'fade-fast', 'pulse', 'shimmer'];
+                const randomType = animationTypes[Math.floor(Math.random() * animationTypes.length)];
+                star.className = `twinkling-star ${randomType}`;
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random size (smaller for background)
+                const size = Math.random() * 1.5 + 0.5;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Random animation delay for variety
+                star.style.animationDelay = Math.random() * 4 + 's';
+                
+                // Random color variation (mostly white with some pink)
+                if (Math.random() < 0.2) { // 20% chance for pink stars
+                    star.style.background = 'radial-gradient(circle, rgba(255, 182, 193, 0.7) 0%, transparent 70%)';
+                }
+                
+                twinklingContainer.appendChild(star);
             }
         }
 
-        // Add floating animation CSS
-        const floatingStyle = document.createElement('style');
-        floatingStyle.textContent = `
-            @keyframes float {
-                0%, 100% {
-                    transform: translateY(0px) rotate(0deg);
+        // Create Constellation Lines
+        function createConstellationLines() {
+            const linesContainer = document.getElementById('constellation-lines');
+            const stars = document.querySelectorAll('.libra-star');
+            
+            // Define actual Libra constellation connections (indices)
+            // Based on real Libra star positions: Alpha, Beta, Gamma, Delta, Epsilon, Zeta
+            const connections = [
+                [0, 1], // Alpha to Beta (top of scales)
+                [0, 2], // Alpha to Gamma (left scale arm)
+                [1, 3], // Beta to Delta (right scale arm)
+                [2, 4], // Gamma to Epsilon (left scale base)
+                [3, 5], // Delta to Zeta (right scale base)
+                [2, 3], // Gamma to Delta (central balance beam)
+                [4, 5]  // Epsilon to Zeta (bottom connection)
+            ];
+            
+            connections.forEach(([from, to], index) => {
+                if (from < stars.length && to < stars.length) {
+                    const fromStar = stars[from];
+                    const toStar = stars[to];
+                    
+                    const line = document.createElement('div');
+                    line.className = 'constellation-line';
+                    
+                    // Calculate position and rotation
+                    const fromRect = fromStar.getBoundingClientRect();
+                    const toRect = toStar.getBoundingClientRect();
+                    const containerRect = linesContainer.getBoundingClientRect();
+                    
+                    const fromX = fromRect.left - containerRect.left + fromRect.width / 2;
+                    const fromY = fromRect.top - containerRect.top + fromRect.height / 2;
+                    const toX = toRect.left - containerRect.left + toRect.width / 2;
+                    const toY = toRect.top - containerRect.top + toRect.height / 2;
+                    
+                    const distance = Math.sqrt((toX - fromX) ** 2 + (toY - fromY) ** 2);
+                    const angle = Math.atan2(toY - fromY, toX - fromX) * (180 / Math.PI);
+                    
+                    line.style.left = fromX + 'px';
+                    line.style.top = fromY + 'px';
+                    line.style.width = distance + 'px';
+                    line.style.transform = `rotate(${angle}deg)`;
+                    line.style.animationDelay = (index * 0.3) + 's';
+                    
+                    linesContainer.appendChild(line);
                 }
-                50% {
-                    transform: translateY(-20px) rotate(180deg);
-                }
-            }
-        `;
-        document.head.appendChild(floatingStyle);
+            });
+        }
 
-        // Initialize floating elements
-        window.addEventListener('load', createFloatingElements);
+        // Initialize Star Hover Functionality
+        function initStarHovers() {
+            const stars = document.querySelectorAll('.libra-star');
+            const panel = document.getElementById('project-details-panel');
+            const panelTitle = document.getElementById('panel-title');
+            const panelImage = document.getElementById('panel-image');
+            const panelTech = document.getElementById('panel-tech');
+            const panelDate = document.getElementById('panel-date');
+            
+            stars.forEach(star => {
+                star.addEventListener('mouseenter', (e) => {
+                    // Get project data from data attributes
+                    const title = star.dataset.title;
+                    const image = star.dataset.image;
+                    const tech = star.dataset.tech;
+                    const date = star.dataset.date;
+                    
+                    // Update panel content
+                    panelTitle.textContent = title;
+                    panelImage.textContent = image;
+                    panelTech.textContent = tech;
+                    panelDate.textContent = date;
+                    
+                    // Show panel with animation
+                    panel.classList.add('active');
+                });
+                
+                star.addEventListener('mouseleave', (e) => {
+                    // Hide panel when mouse leaves star
+                    panel.classList.remove('active');
+                });
+            });
+        }
+
+        // 3D Star Mouse Interaction
+        function init3DStars() {
+            const stars = document.querySelectorAll('.star-model');
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            // Track mouse movement
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                stars.forEach((star, index) => {
+                    const rect = star.getBoundingClientRect();
+                    const starCenterX = rect.left + rect.width / 2;
+                    const starCenterY = rect.top + rect.height / 2;
+                    
+                    // Calculate distance and direction
+                    const deltaX = mouseX - starCenterX;
+                    const deltaY = mouseY - starCenterY;
+                    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                    
+                    // Apply attraction effect within a certain radius
+                    if (distance < 200) {
+                        const attractionStrength = (200 - distance) / 200;
+                        const moveX = (deltaX * attractionStrength * 0.1);
+                        const moveY = (deltaY * attractionStrength * 0.1);
+                        
+                        star.style.transform = `translate(${moveX}px, ${moveY}px) scale(${1 + attractionStrength * 0.2})`;
+                        star.style.filter = `brightness(${1 + attractionStrength * 0.3})`;
+                    } else {
+                        star.style.transform = '';
+                        star.style.filter = '';
+                    }
+                });
+            });
+            
+            // Reset stars when mouse leaves
+            document.addEventListener('mouseleave', () => {
+                stars.forEach(star => {
+                    star.style.transform = '';
+                    star.style.filter = '';
+                });
+            });
+        }
+
+        // Initialize everything on page load
+        window.addEventListener('load', function() {
+            createStars();
+            createTwinklingStarsBg();
+            initComputerWindows();
+            initPhotoCarousel();
+            init3DStars();
+        });
+
+        // Photo Carousel functionality
+        function initPhotoCarousel() {
+            const container = document.getElementById('carousel-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            let currentSlide = 0;
+            const totalSlides = 3;
+            
+            function updateCarousel() {
+                const translateX = -currentSlide * 100;
+                container.style.transform = `translateX(${translateX}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                updateCarousel();
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => goToSlide(index));
+            });
+            
+            // Auto-advance carousel every 5 seconds
+            setInterval(nextSlide, 5000);
+        }
+
+        // Computer Window Functionality
+        function initComputerWindows() {
+            const windows = document.querySelectorAll('.computer-window');
+            const overlay = document.getElementById('overlay');
+            const expandedProject = document.getElementById('expanded-project');
+            const closeBtn = document.getElementById('close-expanded');
+
+            const projectData = {
+                1: {
+                    title: 'Y2K PORTFOLIO',
+                    description: 'A retro-futuristic portfolio website featuring pink gradients, chrome effects, and Y2K aesthetics. This project showcases modern web development techniques combined with nostalgic design elements from the early 2000s.',
+                    tech: 'HTML5 • CSS3 • JavaScript • Responsive Design',
+                    date: 'December 2023',
+                    image: '🎨'
+                },
+                2: {
+                    title: 'CHROME BUTTONS',
+                    description: 'Interactive chrome-style buttons with hover effects and smooth animations. Features realistic metallic reflections and dynamic lighting effects that respond to user interaction.',
+                    tech: 'CSS3 • SCSS • JavaScript • CSS Animations',
+                    date: 'November 2023',
+                    image: '💻'
+                },
+                3: {
+                    title: 'RETRO DASHBOARD',
+                    description: 'A retro-styled dashboard with animated charts and neon effects. Combines data visualization with cyberpunk aesthetics for a unique user experience.',
+                    tech: 'Vue.js • Chart.js • CSS3 • D3.js',
+                    date: 'August 2023',
+                    image: '📊'
+                },
+                4: {
+                    title: 'NEON TEXT EFFECTS',
+                    description: 'Glowing text effects with CSS animations and SVG filters. Creates dynamic lighting effects that pulse and shimmer with various color schemes.',
+                    tech: 'CSS3 • JavaScript • SVG • CSS Filters',
+                    date: 'September 2023',
+                    image: '✨'
+                },
+                5: {
+                    title: 'PIXEL ART GALLERY',
+                    description: 'Interactive pixel art gallery with canvas animations and retro styling. Features clickable pixel art pieces with smooth transitions and hover effects.',
+                    tech: 'React • Canvas API • CSS3 • JavaScript',
+                    date: 'October 2023',
+                    image: '🖼️'
+                },
+                6: {
+                    title: 'GLITCH EFFECTS',
+                    description: 'Cyberpunk-style glitch effects using CSS transforms and WebGL shaders. Creates realistic digital distortion effects with dynamic color shifts.',
+                    tech: 'CSS3 • JavaScript • WebGL • GLSL Shaders',
+                    date: 'July 2023',
+                    image: '⚡'
+                }
+            };
+
+            windows.forEach(window => {
+                window.addEventListener('click', () => {
+                    const projectId = window.getAttribute('data-project');
+                    const data = projectData[projectId];
+                    
+                    if (data) {
+                        document.getElementById('expanded-project-image').textContent = data.image;
+                        document.getElementById('expanded-project-title').textContent = data.title;
+                        document.getElementById('expanded-project-description').textContent = data.description;
+                        document.getElementById('expanded-project-tech').textContent = data.tech;
+                        document.getElementById('expanded-project-date').textContent = data.date;
+                        
+                        overlay.classList.add('active');
+                        expandedProject.classList.add('active');
+                    }
+                });
+            });
+
+            // Close expanded view
+            function closeExpanded() {
+                overlay.classList.remove('active');
+                expandedProject.classList.remove('active');
+            }
+
+            closeBtn.addEventListener('click', closeExpanded);
+            overlay.addEventListener('click', closeExpanded);
+
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeExpanded();
+                }
+            });
+        }
+
+        // Add some sparkle effects on scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const stars = document.querySelectorAll('.star');
+            
+            stars.forEach((star, index) => {
+                const speed = 0.5 + (index % 3) * 0.2;
+                const yPos = -(scrolled * speed);
+                star.style.transform = `translateY(${yPos}px)`;
+            });
+        });
     </script>
 </body>
 </html>
