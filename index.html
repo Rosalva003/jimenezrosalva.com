@@ -837,6 +837,7 @@
             color: #ff69b4;
         }
 
+
         .hero p {
             font-family: 'DotGothic16', monospace;
             font-size: 1.2rem;
@@ -1588,6 +1589,7 @@
                 rgba(0, 0, 0, 0.9) 100%);
             position: relative;
             overflow: hidden;
+            z-index: 10;
         }
 
         .contact-section::before {
@@ -1760,8 +1762,8 @@
 
         @keyframes nameFadeIn {
             0% { 
-                opacity: 0;
-                transform: translateY(30px);
+            opacity: 0;
+            transform: translateY(30px);
             }
             100% { 
                 opacity: 1;
@@ -2036,7 +2038,7 @@
                 transform: translate(-50%, -50%) scale(1);
             }
             50% { 
-                opacity: 1;
+            opacity: 1;
                 transform: translate(-50%, -50%) scale(1.2);
             }
         }
@@ -2074,7 +2076,7 @@
 
         /* Projects Section */
         .projects {
-            padding: 120px 50px;
+            padding: 120px 50px 300px 50px;
             background: linear-gradient(135deg, 
                 rgba(255, 105, 180, 0.1) 0%, 
                 rgba(255, 192, 203, 0.1) 25%,
@@ -2083,6 +2085,7 @@
                 rgba(255, 20, 147, 0.1) 100%);
             position: relative;
             z-index: 2;
+            min-height: 100vh;
         }
 
 
@@ -2116,25 +2119,6 @@
             filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.9));
         }
 
-        .projects h2::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, 
-                rgba(255, 255, 255, 0.9) 0%, 
-                rgba(240, 240, 240, 0.7) 25%, 
-                rgba(255, 182, 193, 0.5) 50%, 
-                rgba(255, 105, 180, 0.7) 75%, 
-                rgba(255, 255, 255, 0.9) 100%);
-            background-size: 400% 400%;
-            border-radius: 8px;
-            z-index: -1;
-            animation: chromeGlow 4s ease-in-out infinite;
-            filter: blur(4px);
-        }
 
         .projects-instruction {
             font-family: 'DotGothic16', monospace;
@@ -2268,6 +2252,108 @@
             font-size: 4rem;
             margin-bottom: 20px;
             text-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .project-icon img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 105, 180, 0.6);
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .project-icon img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+            cursor: pointer;
+        }
+
+        /* Image Lightbox Modal */
+        .image-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.1) 0%, 
+                rgba(255, 105, 180, 0.1) 100%);
+            border: 2px solid rgba(255, 105, 180, 0.6);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 
+                0 0 50px rgba(255, 182, 193, 0.6),
+                0 0 100px rgba(255, 105, 180, 0.4);
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .image-lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 182, 193, 0.8);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(255, 105, 180, 0.8);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 105, 180, 1);
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+        }
+
+        .lightbox-title {
+            color: rgba(255, 182, 193, 0.9);
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
         }
 
         .project-title {
@@ -3328,6 +3414,11 @@
                 margin-bottom: 15px;
             }
             
+            .project-icon img {
+                width: 60px;
+                height: 60px;
+            }
+            
             .project-title {
                 font-size: 0.8rem;
                 margin-bottom: 10px;
@@ -3439,11 +3530,10 @@
                 <!-- Student Description -->
                 <div class="student-description">
                     <p>3rd year SJSU student, Digital Media Art (DMA)</p>
-                </div>
+            </div>
                 
                 <!-- Creative Journey Timeline List -->
                 <div class="timeline-section">
-                    <h3 class="timeline-title">ART MEDIUMS</h3>
                     <ul class="timeline-list">
                         <li class="timeline-list-item">
                             <div class="timeline-item-title">DIGITAL DRAWING</div>
@@ -3459,7 +3549,7 @@
                         </li>
                     </ul>
                     
-                    <h3 class="timeline-title current-learning">CURRENTLY LEARNING</h3>
+                    <h3 class="timeline-title current-learning">LEARNING</h3>
                     <ul class="timeline-list">
                         <li class="timeline-list-item">
                             <div class="timeline-item-title">3D MODELING</div>
@@ -3471,7 +3561,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <!-- Photo Carousel -->
                 <div class="photo-carousel">
                     <div class="carousel-container" id="carousel-container">
@@ -3481,22 +3571,18 @@
                         <div class="carousel-slide">
                             <img src="artwork2.gif" alt="Artwork 2" />
                         </div>
-                        <div class="carousel-slide">
-                            <img src="placeholder3.jpg" alt="Artwork 3" />
-                        </div>
-                    </div>
-                    
+                </div>
+
                     <button class="carousel-nav carousel-prev" id="prev-btn">‹</button>
                     <button class="carousel-nav carousel-next" id="next-btn">›</button>
                     
                     <div class="carousel-dots">
                         <button class="carousel-dot active" data-slide="0"></button>
                         <button class="carousel-dot" data-slide="1"></button>
-                        <button class="carousel-dot" data-slide="2"></button>
+                        </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
 
     <!-- Projects Section -->
@@ -3507,120 +3593,141 @@
                 <!-- Project 1 -->
                 <div class="computer-window" data-project="1">
                     <div class="window-titlebar">
-                        <div class="window-title">Y2K PORTFOLIO.exe</div>
+                        <div class="window-title">GLITCH ART (PHOT 40).exe</div>
                         <div class="window-controls">
                             <div class="window-control control-close"></div>
                             <div class="window-control control-minimize"></div>
                             <div class="window-control control-maximize"></div>
                         </div>
-                    </div>
+                        </div>
                     <div class="window-content">
                         <div class="project-preview">
-                            <div class="project-icon">🎨</div>
-                            <div class="project-title">Y2K PORTFOLIO</div>
-                            <div class="project-description">A retro-futuristic portfolio website featuring pink gradients, chrome effects, and Y2K aesthetics.</div>
-                        </div>
+                            <div class="project-icon">
+                                <img src="project1-image.jpg" alt="Glitch Art (PHOT 40) Project" />
+                    </div>
+                            <div class="project-title">GLITCH ART (PHOT 40)</div>
+                            <div class="project-description">Digital glitch art project exploring the intersection of photography and digital manipulation techniques.</div>
+                </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
                 <div class="computer-window" data-project="2">
                     <div class="window-titlebar">
-                        <div class="window-title">CHROME BUTTONS.exe</div>
+                        <div class="window-title">SELF PORTRAIT.exe</div>
                         <div class="window-controls">
                             <div class="window-control control-close"></div>
                             <div class="window-control control-minimize"></div>
                             <div class="window-control control-maximize"></div>
                         </div>
-                    </div>
+                        </div>
                     <div class="window-content">
                         <div class="project-preview">
-                            <div class="project-icon">💻</div>
-                            <div class="project-title">CHROME BUTTONS</div>
-                            <div class="project-description">Interactive chrome-style buttons with hover effects and smooth animations.</div>
-                        </div>
+                            <div class="project-icon">
+                                <img src="project2-image.jpg" alt="Self Portrait Project" />
                     </div>
+                            <div class="project-title">SELF PORTRAIT</div>
+                            <div class="project-description">A personal self-portrait exploring identity and self-expression through digital photography, created on Procreate.</div>
                 </div>
+            </div>
+        </div>
 
                 <!-- Project 3 -->
                 <div class="computer-window" data-project="3">
                     <div class="window-titlebar">
-                        <div class="window-title">RETRO DASHBOARD.exe</div>
+                        <div class="window-title">DIGITAL GALAXY (ART 102).exe</div>
                         <div class="window-controls">
                             <div class="window-control control-close"></div>
                             <div class="window-control control-minimize"></div>
                             <div class="window-control control-maximize"></div>
-                        </div>
-                    </div>
+            </div>
+                </div>
                     <div class="window-content">
                         <div class="project-preview">
-                            <div class="project-icon">📊</div>
-                            <div class="project-title">RETRO DASHBOARD</div>
-                            <div class="project-description">A retro-styled dashboard with animated charts and neon effects.</div>
+                            <div class="project-icon">
+                                <img src="project3-image.jpg" alt="Digital Galaxy Project" />
+                            </div>
+                            <div class="project-title">DIGITAL GALAXY (ART 102)</div>
+                            <div class="project-description">A playful digital star galaxy capturing that Y2K aesthetics, modeled and rendered with a pastel, bubbly vibe. Created on Nomad Sculpt.</div>
                         </div>
-                    </div>
-                </div>
+        </div>
+    </div>
 
                 <!-- Project 4 -->
                 <div class="computer-window" data-project="4">
                     <div class="window-titlebar">
-                        <div class="window-title">NEON TEXT.exe</div>
+                        <div class="window-title">PIXEL & PAINT.exe</div>
                         <div class="window-controls">
                             <div class="window-control control-close"></div>
                             <div class="window-control control-minimize"></div>
                             <div class="window-control control-maximize"></div>
-                        </div>
-                    </div>
+            </div>
+                </div>
                     <div class="window-content">
                         <div class="project-preview">
-                            <div class="project-icon">✨</div>
-                            <div class="project-title">NEON TEXT EFFECTS</div>
-                            <div class="project-description">Glowing text effects with CSS animations and SVG filters.</div>
+                            <div class="project-icon">
+                                <img src="project4-image.jpg" alt="Pixel & Paint Project" />
+                            </div>
+                            <div class="project-title">PIXEL & PAINT</div>
+                            <div class="project-description">An artwork that captures the feeling of existing between two worlds- the nostalgic touch of traditional art and digital creation. But gradually gravitated towards the digital art world.</div>
                         </div>
-                    </div>
-                </div>
+        </div>
+    </div>
 
                 <!-- Project 5 -->
                 <div class="computer-window" data-project="5">
                     <div class="window-titlebar">
-                        <div class="window-title">PIXEL ART.exe</div>
+                        <div class="window-title">PROJECT 1 (ART 102).exe</div>
                         <div class="window-controls">
                             <div class="window-control control-close"></div>
                             <div class="window-control control-minimize"></div>
                             <div class="window-control control-maximize"></div>
-                        </div>
-                    </div>
+            </div>
+                </div>
                     <div class="window-content">
                         <div class="project-preview">
-                            <div class="project-icon">🖼️</div>
-                            <div class="project-title">PIXEL ART GALLERY</div>
-                            <div class="project-description">Interactive pixel art gallery with canvas animations and retro styling.</div>
+                            <div class="project-icon">
+                                <img src="project5-image.jpg" alt="Project 1 (Art 102)" />
+                            </div>
+                            <div class="project-title">PROJECT 1 (ART 102)</div>
+                            <div class="project-description">A fun Chibi 3D rendered model with yellow stars and a red balloon, giving a fun and energetic feel. Made on Blender.</div>
                         </div>
-                    </div>
-                </div>
+        </div>
+    </div>
 
                 <!-- Project 6 -->
                 <div class="computer-window" data-project="6">
                     <div class="window-titlebar">
-                        <div class="window-title">GLITCH EFFECTS.exe</div>
+                        <div class="window-title">PROJECT 2 (ART 102).exe</div>
                         <div class="window-controls">
                             <div class="window-control control-close"></div>
                             <div class="window-control control-minimize"></div>
                             <div class="window-control control-maximize"></div>
-                        </div>
-                    </div>
+            </div>
+                </div>
                     <div class="window-content">
                         <div class="project-preview">
-                            <div class="project-icon">⚡</div>
-                            <div class="project-title">GLITCH EFFECTS</div>
-                            <div class="project-description">Cyberpunk-style glitch effects using CSS transforms and WebGL shaders.</div>
-                        </div>
-                    </div>
+                            <div class="project-icon">
+                                <img src="project6-image.jpg" alt="Project 2 (Art 102)" />
+                            </div>
+                            <div class="project-title">PROJECT 2 (ART 102)</div>
+                            <div class="project-description">Still in progress, but this is what I have in mind. Created on Blender.</div>
                 </div>
             </div>
+        </div>
+    </div>
 
             <!-- Overlay for expanded view -->
             <div class="overlay" id="overlay"></div>
+
+            <!-- Image Lightbox Modal -->
+            <div class="image-lightbox" id="image-lightbox">
+                <div class="lightbox-content">
+                    <button class="lightbox-close" id="lightbox-close">×</button>
+                    <img class="lightbox-image" id="lightbox-image" src="" alt="Project Image" />
+                    <div class="lightbox-title" id="lightbox-title">Project Image</div>
+        </div>
+    </div>
 
             <!-- Expanded Project View -->
             <div class="project-expanded" id="expanded-project">
@@ -3630,7 +3737,7 @@
                         <div class="window-control control-close" id="close-expanded"></div>
                         <div class="window-control control-minimize"></div>
                         <div class="window-control control-maximize"></div>
-                    </div>
+            </div>
                 </div>
                 <div class="expanded-content">
                     <div class="expanded-image" id="expanded-project-image">🎨</div>
@@ -3649,10 +3756,10 @@
         <p class="contact-subtitle">Ready to collaborate or just want to chat about digital art and web development? Let's create something amazing together!</p>
         
         <div class="social-links">
-            <a href="https://instagram.com/rosalva" class="social-link" title="Instagram">
-                Instagram
+            <a href="https://instagram.com/sta.rrgirlxx" class="social-link" title="Instagram">
+                IG Art account: @sta.rrgirlxx
             </a>
-        </div>
+    </div>
         
         <div class="contact-email">
             <a href="mailto:rosalvaj444@gmail.com" class="email-link">
@@ -3955,8 +4062,8 @@
                 star.addEventListener('mouseleave', (e) => {
                     // Hide panel when mouse leaves star
                     panel.classList.remove('active');
-                });
             });
+        });
         }
 
         // 3D Star Mouse Interaction
@@ -3991,10 +4098,10 @@
                     } else {
                         star.style.transform = '';
                         star.style.filter = '';
-                    }
-                });
+                }
             });
-            
+        });
+
             // Reset stars when mouse leaves
             document.addEventListener('mouseleave', () => {
                 stars.forEach(star => {
@@ -4011,6 +4118,7 @@
             initComputerWindows();
             initPhotoCarousel();
             init3DStars();
+            initImageLightbox();
         });
 
         // Photo Carousel functionality
@@ -4021,7 +4129,7 @@
             const dots = document.querySelectorAll('.carousel-dot');
             
             let currentSlide = 0;
-            const totalSlides = 3;
+            const totalSlides = 2;
             
             function updateCarousel() {
                 const translateX = -currentSlide * 100;
@@ -4069,51 +4177,59 @@
 
             const projectData = {
                 1: {
-                    title: 'Y2K PORTFOLIO',
-                    description: 'A retro-futuristic portfolio website featuring pink gradients, chrome effects, and Y2K aesthetics. This project showcases modern web development techniques combined with nostalgic design elements from the early 2000s.',
-                    tech: 'HTML5 • CSS3 • JavaScript • Responsive Design',
-                    date: 'December 2023',
+                    title: 'GLITCH ART (PHOT 40)',
+                    description: 'Digital glitch art project exploring the intersection of photography and digital manipulation techniques. This project investigates the aesthetic possibilities of digital errors and data corruption as artistic medium.',
+                    tech: 'Photoshop • Digital Photography • Glitch Art Techniques • Post-Processing',
+                    date: 'Fall 2023',
                     image: '🎨'
                 },
                 2: {
-                    title: 'CHROME BUTTONS',
-                    description: 'Interactive chrome-style buttons with hover effects and smooth animations. Features realistic metallic reflections and dynamic lighting effects that respond to user interaction.',
-                    tech: 'CSS3 • SCSS • JavaScript • CSS Animations',
-                    date: 'November 2023',
+                    title: 'SELF PORTRAIT',
+                    description: 'A personal self-portrait exploring identity and self-expression through digital photography, created on Procreate. This project investigates themes of self-representation and artistic identity in the digital age.',
+                    tech: 'Procreate • Digital Photography • Portrait Techniques • Self-Expression',
+                    date: 'Fall 2023',
                     image: '💻'
                 },
                 3: {
-                    title: 'RETRO DASHBOARD',
-                    description: 'A retro-styled dashboard with animated charts and neon effects. Combines data visualization with cyberpunk aesthetics for a unique user experience.',
-                    tech: 'Vue.js • Chart.js • CSS3 • D3.js',
-                    date: 'August 2023',
+                    title: 'DIGITAL GALAXY (ART 102)',
+                    description: 'A playful digital star galaxy capturing that Y2K aesthetics, modeled and rendered with a pastel, bubbly vibe. Created on Nomad Sculpt. This project explores the intersection of 3D modeling and nostalgic design aesthetics.',
+                    tech: 'Nomad Sculpt • 3D Modeling • Y2K Aesthetics • Pastel Design • ART 102',
+                    date: 'Fall 2023',
                     image: '📊'
                 },
                 4: {
-                    title: 'NEON TEXT EFFECTS',
-                    description: 'Glowing text effects with CSS animations and SVG filters. Creates dynamic lighting effects that pulse and shimmer with various color schemes.',
-                    tech: 'CSS3 • JavaScript • SVG • CSS Filters',
-                    date: 'September 2023',
+                    title: 'PIXEL & PAINT',
+                    description: 'An artwork that captures the feeling of existing between two worlds- the nostalgic touch of traditional art and digital creation. But gradually gravitated towards the digital art world. This project represents a personal artistic journey and evolution.',
+                    tech: 'Digital Art • Pixel Art • Traditional Painting • Mixed Media',
+                    date: 'Fall 2023',
                     image: '✨'
                 },
                 5: {
-                    title: 'PIXEL ART GALLERY',
-                    description: 'Interactive pixel art gallery with canvas animations and retro styling. Features clickable pixel art pieces with smooth transitions and hover effects.',
-                    tech: 'React • Canvas API • CSS3 • JavaScript',
-                    date: 'October 2023',
+                    title: 'PROJECT 1 (ART 102)',
+                    description: 'A fun Chibi 3D rendered model with yellow stars and a red balloon, giving a fun and energetic feel. Made on Blender. This project showcases 3D modeling skills and playful character design.',
+                    tech: 'Blender • 3D Modeling • Character Design • Rendering • ART 102',
+                    date: 'Fall 2023',
                     image: '🖼️'
                 },
                 6: {
-                    title: 'GLITCH EFFECTS',
-                    description: 'Cyberpunk-style glitch effects using CSS transforms and WebGL shaders. Creates realistic digital distortion effects with dynamic color shifts.',
-                    tech: 'CSS3 • JavaScript • WebGL • GLSL Shaders',
-                    date: 'July 2023',
+                    title: 'PROJECT 2 (ART 102)',
+                    description: 'Still in progress, but this is what I have in mind. Created on Blender.',
+                    tech: 'Blender • 3D Modeling • ART 102',
+                    date: 'Fall 2023',
                     image: '⚡'
                 }
             };
 
             windows.forEach(window => {
-                window.addEventListener('click', () => {
+                window.addEventListener('click', (e) => {
+                    // Don't trigger window expansion if clicking on an image, title, or description
+                    if (e.target.tagName === 'IMG' || 
+                        e.target.closest('.project-icon img') ||
+                        e.target.classList.contains('project-title') ||
+                        e.target.classList.contains('project-description')) {
+                        return;
+                    }
+                    
                     const projectId = window.getAttribute('data-project');
                     const data = projectData[projectId];
                     
@@ -4143,6 +4259,50 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeExpanded();
+                }
+            });
+        }
+
+        // Image Lightbox Functionality
+        function initImageLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxClose = document.getElementById('lightbox-close');
+            
+            // Add click event to project images
+            const projectImages = document.querySelectorAll('.project-icon img');
+            
+            projectImages.forEach(img => {
+                img.addEventListener('click', (e) => {
+                    // Set the image source and title
+                    lightboxImage.src = img.src;
+                    lightboxImage.alt = img.alt;
+                    lightboxTitle.textContent = img.alt;
+                    
+                    // Show the lightbox
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+            });
+            
+            // Close lightbox
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+            
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
                 }
             });
         }
